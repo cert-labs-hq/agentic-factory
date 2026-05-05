@@ -55,9 +55,12 @@ The day-to-day execution of the factory floor is governed by the **Factory Proto
 Every session with the Gemini CLI **MUST** follow this sequence to ensure process integrity.
 
 ### 1.1 Ingestion Phase
-*   The Agent **MUST** read the `docs/master_spec.md` to understand the global system constraints.
+*   The Agent **MUST** use `ls -R` or `glob` to verify the current file structure at the start of every session.
+*   The Agent **MUST** perform a fresh `read_file` of all critical files (`GEMINI.md`, `docs/master-spec.md`) at the start of EVERY new directive, even if they were read in a previous turn.
+*   **Cache-Busting:** The Agent MUST NOT assume the context provided in the `session_context` is the absolute current state if manual edits are frequent; empirical verification via tool calls is mandatory.
 *   The Agent **MUST** read the target Slice JSON in `/.factory/slices/[ID].json`.
 *   The Agent **MUST** read the corresponding Markdown specification in `/docs/specs/[ID].md`.
+
 
 ### 1.2 Validation Phase
 *   The Agent **SHOULD** verify that all architectural dependencies are present in the repository.
@@ -89,9 +92,13 @@ Every successful implementation response **MUST** conclude with a JSON block in 
 }
 ```
 
-### 2.2 Where to save the report
+### 2.2 Universal Telemetry Logging
 
-In every prompt the report must be added to /.factoy/telemetry.json.
+*   **Mandatory Capture:** EVERY interaction (markdown prompts, free-text chat, or ad-hoc tasks) MUST be recorded in `/.factory/telemetry.json`.
+*   **Context Categorization:** 
+    *   Tasks derived from `prompts/` must use their Slice ID.
+    *   Ad-hoc chat or configuration changes must use the context `GENERAL` or `AD-HOC`.
+*   **Total Cost Tracking:** The `project_total_cost` field must be updated incrementally with every new log entry.
 
 ---
 

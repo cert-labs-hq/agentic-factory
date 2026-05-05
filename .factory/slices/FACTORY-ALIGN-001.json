@@ -1,0 +1,16 @@
+{
+  "id": "FACTORY-ALIGN-001",
+  "title": "Architecture Alignment Check",
+  "status": "Approved",
+  "created_at": "2026-05-05T10:00:00Z",
+  "updated_at": "2026-05-05T10:30:00Z",
+  "assigned_to": "gemini-cli",
+  "token_usage": {
+    "total": 8600,
+    "prompt": 6500,
+    "completion": 2100
+  },
+  "spec_path": "prompts/01_20260504_check_architecture.md",
+  "dependencies": [],
+  "metadata_version": "1.0"
+}
