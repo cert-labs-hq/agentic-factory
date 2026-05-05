@@ -1,8 +1,8 @@
 {
   "project_total_cost": {
-    "input_tokens": 45000,
-    "reasoning_tokens": 6000,
-    "output_tokens": 4000
+    "input_tokens": 60000,
+    "reasoning_tokens": 8000,
+    "output_tokens": 5000
   },
   "logs": [
     {
@@ -39,6 +39,13 @@
       "phase": "foundations",
       "status": "success",
       "tokens": { "input": 14380, "reasoning": 2372, "output": 1855 }
+    },
+    {
+      "timestamp": "2026-05-05T13:00:00Z",
+      "context": "FACTORY-TELEMETRY-SUMMARY-003",
+      "phase": "foundations",
+      "status": "success",
+      "tokens": { "input": 15000, "reasoning": 2000, "output": 1000 }
     }
   ]
 }

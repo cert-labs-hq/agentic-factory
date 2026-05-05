@@ -1,0 +1,15 @@
+{
+  "total_cost": {
+    "input_tokens": 60000,
+    "reasoning_tokens": 8000,
+    "output_tokens": 5000
+  },
+  "phases": {
+    "foundations": {
+      "input_tokens": 60000,
+      "reasoning_tokens": 8000,
+      "output_tokens": 5000,
+      "count": 6
+    }
+  }
+}
