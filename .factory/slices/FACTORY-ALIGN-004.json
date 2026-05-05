@@ -1,0 +1,19 @@
+{
+  "id": "FACTORY-ALIGN-004",
+  "title": "Slice Schema Definition and Enforcement",
+  "status": "Approved",
+  "created_at": "2026-05-05T13:45:00Z",
+  "updated_at": "2026-05-05T14:05:00Z",
+  "assigned_to": "gemini-cli",
+  "phase": "foundations",
+  "token_usage": {
+    "total": 19700,
+    "prompt": 16000,
+    "completion": 1200
+  },
+  "spec_path": "prompts/foundations/04_20260505_sclice_schema.md",
+  "dependencies": [
+    "FACTORY-ALIGN-002"
+  ],
+  "metadata_version": "1.1"
+}

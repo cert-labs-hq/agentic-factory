@@ -1,8 +1,8 @@
 {
   "project_total_cost": {
-    "input_tokens": 60000,
-    "reasoning_tokens": 8000,
-    "output_tokens": 5000
+    "input_tokens": 76000,
+    "reasoning_tokens": 10500,
+    "output_tokens": 6200
   },
   "logs": [
     {
@@ -46,6 +46,13 @@
       "phase": "foundations",
       "status": "success",
       "tokens": { "input": 15000, "reasoning": 2000, "output": 1000 }
+    },
+    {
+      "timestamp": "2026-05-05T14:00:00Z",
+      "context": "FACTORY-ALIGN-004",
+      "phase": "foundations",
+      "status": "success",
+      "tokens": { "input": 16000, "reasoning": 2500, "output": 1200 }
     }
   ]
 }

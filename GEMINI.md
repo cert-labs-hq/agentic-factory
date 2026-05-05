@@ -9,6 +9,7 @@ An automated dashboard to visualize AI code generation plans, "slices," and toke
 2. **Observability First:** When writing functions, always include metadata extraction for `thoughts_token_count` and `candidates_token_count`.
 3. **Spec-Driven Development:** Follow a "slice-based" approach across five phases: Foundations, Specs, Planning, Implementation, and Validation. Before writing code, briefly outline the implementation plan in a JSON-compatible format.
 4. **Tooling:** Assume the use of Gemini 2.0/3.0 models via CLI and GitHub for version control.
+5. **Schema Compliance:** Every slice implementation MUST adhere to the JSON schema defined in `.factory/slices/schema_file.json`.
 
 ## Tech Stack
 - **Frontend:** TypeScript / React (Tailwind for styling)

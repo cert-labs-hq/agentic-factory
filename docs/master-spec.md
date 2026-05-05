@@ -13,6 +13,7 @@ Generate an Agentic code implementation supply chain to generate a product imple
 ## 3. The Logic of Slices
 The project is divided into discrete units of work called **Slices**.
 *   Each slice must have a corresponding JSON metadata schema.
+*   **Compliance:** All slice metadata MUST strictly adhere to the schema defined in `.factory/slices/schema_file.json`.
 *   The metadata schema tracks the state, token cost, and implementation history.
 
 ## 4. State Machine (The Factory Floor)
