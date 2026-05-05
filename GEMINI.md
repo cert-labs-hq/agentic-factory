@@ -23,8 +23,7 @@ An automated dashboard to visualize AI code generation plans, "slices," and toke
 
 ## MANDATORY CONTEXT
 Before performing any action, you MUST:
-1. Load and adhere to the operational rules in `docs/factory/protocol.md`.
-2. Ensure compliance with the system architecture in `docs/master_spec.md`.
+1. Ensure compliance with the system architecture in `docs/master_spec.md`.
 
 ## Telemetry Requirement
 For every output, you must append your `usage_metadata` to the end of your response 

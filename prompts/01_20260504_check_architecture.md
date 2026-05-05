@@ -9,6 +9,6 @@ Referencing: `/docs/master-spec.md` and root `GEMINI.md`
 
 ## Output
 - **Operational Constraints:** A concise list of rules you will adhere to for every code generation task.
-- **Telemetry Entry:** A JSON-formatted snippet representing this task as a "Slice" (State: Review, Metadata: Token Usage).
+- **Telemetry Entry:** A JSON-formatted snippet representing this task as a "Slice" (State: Review, Metadata: Token Usage). Update .factory/telemetry.json with the new slice metadat
 - **Token Receipt:** A breakdown of this interaction (Input, Reasoning, Output).
-- **Wait for my confirmation** after this review before proceeding to any file creation.
+- Implement the changes and update telemetry, then notify me for final review.

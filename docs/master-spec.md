@@ -89,6 +89,10 @@ Every successful implementation response **MUST** conclude with a JSON block in 
 }
 ```
 
+### 2.2 Where to save the report
+
+In every prompt the report must be added to /.factoy/telemetry.json.
+
 ---
 
 ## 3. Rejection & Exception Handling
