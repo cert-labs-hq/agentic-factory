@@ -1,33 +1,44 @@
 {
   "project_total_cost": {
-    "input_tokens": 30620,
-    "reasoning_tokens": 3628,
-    "output_tokens": 2145
+    "input_tokens": 45000,
+    "reasoning_tokens": 6000,
+    "output_tokens": 4000
   },
   "logs": [
     {
       "timestamp": "2026-05-04T13:30:00Z",
       "context": "setup_repo_structure",
+      "phase": "foundations",
       "status": "success",
       "tokens": { "input": 1420, "reasoning": 128, "output": 495 }
     },
     {
       "timestamp": "2026-05-05T10:30:00Z",
       "context": "FACTORY-ALIGN-001",
+      "phase": "foundations",
       "status": "success",
       "tokens": { "input": 6500, "reasoning": 1500, "output": 600 }
     },
     {
       "timestamp": "2026-05-05T11:00:00Z",
       "context": "FACTORY-SYNC-PROT-003",
+      "phase": "foundations",
       "status": "success",
       "tokens": { "input": 11200, "reasoning": 1200, "output": 450 }
     },
     {
       "timestamp": "2026-05-05T11:15:00Z",
       "context": "AD-HOC-ALIGNMENT",
+      "phase": "foundations",
       "status": "success",
       "tokens": { "input": 11500, "reasoning": 800, "output": 600 }
+    },
+    {
+      "timestamp": "2026-05-05T12:35:00Z",
+      "context": "FACTORY-ALIGN-002",
+      "phase": "foundations",
+      "status": "success",
+      "tokens": { "input": 14380, "reasoning": 2372, "output": 1855 }
     }
   ]
 }

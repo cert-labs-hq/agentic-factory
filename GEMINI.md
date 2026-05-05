@@ -7,7 +7,7 @@ An automated dashboard to visualize AI code generation plans, "slices," and toke
 ## Core Directives
 1. **Token Efficiency:** Always suggest code that minimizes output tokens without sacrificing readability. Favor concise logic over verbose explanations.
 2. **Observability First:** When writing functions, always include metadata extraction for `thoughts_token_count` and `candidates_token_count`.
-3. **Spec-Driven Development:** Follow a "slice-based" approach. Before writing code, briefly outline the implementation plan in a JSON-compatible format.
+3. **Spec-Driven Development:** Follow a "slice-based" approach across five phases: Foundations, Specs, Planning, Implementation, and Validation. Before writing code, briefly outline the implementation plan in a JSON-compatible format.
 4. **Tooling:** Assume the use of Gemini 2.0/3.0 models via CLI and GitHub for version control.
 
 ## Tech Stack

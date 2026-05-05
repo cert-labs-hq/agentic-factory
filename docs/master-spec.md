@@ -43,6 +43,15 @@ A slice is only considered "Warehoused" when:
 ## 7. Operational Governance
 The day-to-day execution of the factory floor is governed by the **Factory Protocol** 
 
+## 8. Spec-Driven Development Phases
+The lifecycle of a product implementation is divided into five distinct phases, each represented by a dedicated directory in `prompts/`:
+
+1.  **Foundations:** Initial setup, architectural alignment, and core protocol definitions.
+2.  **Specs:** Detailed technical specifications for individual features or components.
+3.  **Planning:** Strategic breakdown of specs into actionable slices and implementation plans.
+4.  **Implementation:** Active code generation and development turns.
+5.  **Validation:** Testing, QA, and verification of implemented slices against the original specs.
+
 # 📑 Factory Protocol: Standard Operating Procedure (SOP)
 
 **Version:** 1.0.0  
