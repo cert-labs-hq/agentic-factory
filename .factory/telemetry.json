@@ -1,0 +1,15 @@
+{
+  "project_total_cost": {
+    "input_tokens": 0,
+    "reasoning_tokens": 0,
+    "output_tokens": 0
+  },
+  "logs": [
+    {
+      "timestamp": "2026-05-04T13:30:00Z",
+      "context": "setup_repo_structure",
+      "status": "success",
+      "tokens": { "input": 1420, "reasoning": 128, "output": 495 }
+    }
+  ]
+}
