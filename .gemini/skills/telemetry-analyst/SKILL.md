@@ -1,7 +1,9 @@
 ---
 name: telemetry-analyst
-description: Analyzes and summarizes SDD token costs and usage metrics from telemetry logs. Use when the user wants to see total project costs, phase-specific expenses, or detailed breakdowns of input, reasoning, and output tokens.
+description: Analyzes and summarizes SDD token costs and usage metrics from telemetry logs. Use when the user wants to see total project costs, phase-specific expenses, or detailed breakdowns of prompt, reasoning, and output tokens.
 ---
+
+**Triggers**: "/update-telemetry"
 
 # Telemetry Analyst
 
@@ -15,7 +17,7 @@ To update the `telemetry_summary.json` file with the latest metrics:
 
 ### 2. View Costs
 You can view the costs by phase or total:
-- **Total Cost**: Aggregated across all logged interactions.
+- **Total Cost**: Aggregated across all logged interactions including **Prompt**, **Reasoning**, and **Output** tokens.
 - **Phase Cost**: Breakdown by Foundations, Specs, Planning, Implementation, and Validation.
 
 ## Resources

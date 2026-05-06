@@ -7,9 +7,10 @@
   "assigned_to": "gemini-cli",
   "phase": "foundations",
   "token_usage": {
-    "total": 0,
-    "prompt": 0,
-    "completion": 0
+    "prompt": 14380,
+    "reasoning": 2372,
+    "output": 1855,
+    "total": 18607
   },
   "spec_path": "prompts/foundations/02_20260505_prompts_telemetry.md",
   "dependencies": [

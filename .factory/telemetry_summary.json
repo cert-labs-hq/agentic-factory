@@ -1,15 +1,24 @@
 {
   "total_cost": {
-    "input_tokens": 60000,
-    "reasoning_tokens": 8000,
-    "output_tokens": 5000
+    "prompt_tokens": 310500,
+    "reasoning_tokens": 57100,
+    "output_tokens": 30850,
+    "total_tokens": 398450
   },
   "phases": {
     "foundations": {
-      "input_tokens": 60000,
-      "reasoning_tokens": 8000,
-      "output_tokens": 5000,
-      "count": 6
+      "prompt_tokens": 307500,
+      "reasoning_tokens": 56100,
+      "output_tokens": 29350,
+      "total_tokens": 392950,
+      "count": 17
+    },
+    "specs": {
+      "prompt_tokens": 3000,
+      "reasoning_tokens": 1000,
+      "output_tokens": 1500,
+      "total_tokens": 5500,
+      "count": 1
     }
   }
 }

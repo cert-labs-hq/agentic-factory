@@ -13,8 +13,17 @@ def analyze():
         data = json.load(f)
 
     logs = data.get('logs', [])
+    project_total = data.get('project_total_cost', {})
+    
+    # Map old keys to new keys if necessary during transition, 
+    # but based on previous steps, telemetry.json is already updated.
     summary = {
-        "total_cost": data.get('project_total_cost', {}),
+        "total_cost": {
+            "prompt_tokens": project_total.get('prompt', 0),
+            "reasoning_tokens": project_total.get('reasoning', 0),
+            "output_tokens": project_total.get('output', 0),
+            "total_tokens": project_total.get('total', 0)
+        },
         "phases": {}
     }
 
@@ -24,16 +33,19 @@ def analyze():
         
         if phase not in summary['phases']:
             summary['phases'][phase] = {
-                "input_tokens": 0,
+                "prompt_tokens": 0,
                 "reasoning_tokens": 0,
                 "output_tokens": 0,
+                "total_tokens": 0,
                 "count": 0
             }
         
         p = summary['phases'][phase]
-        p['input_tokens'] += tokens.get('input', 0)
+        # Support both old and new keys for resilience during script execution
+        p['prompt_tokens'] += tokens.get('prompt', tokens.get('input', 0))
         p['reasoning_tokens'] += tokens.get('reasoning', 0)
         p['output_tokens'] += tokens.get('output', 0)
+        p['total_tokens'] += tokens.get('total', 0)
         p['count'] += 1
 
     with open(SUMMARY_PATH, 'w') as f:

@@ -6,9 +6,10 @@
   "updated_at": "2026-05-04T12:00:00Z",
   "assigned_to": "gemini-cli",
   "token_usage": {
-    "total": 0,
-    "prompt": 0,
-    "completion": 0
+    "prompt": 1420,
+    "reasoning": 128,
+    "output": 495,
+    "total": 2043
   },
   "spec_path": "docs/specs/000-factory-bootstrap.md",
   "dependencies": [],

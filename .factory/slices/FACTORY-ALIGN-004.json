@@ -7,9 +7,10 @@
   "assigned_to": "gemini-cli",
   "phase": "foundations",
   "token_usage": {
-    "total": 19700,
     "prompt": 16000,
-    "completion": 1200
+    "reasoning": 2500,
+    "output": 1200,
+    "total": 19700
   },
   "spec_path": "prompts/foundations/04_20260505_sclice_schema.md",
   "dependencies": [

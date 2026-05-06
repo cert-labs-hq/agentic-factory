@@ -7,9 +7,10 @@
   "assigned_to": "gemini-cli",
   "phase": "foundations",
   "token_usage": {
-    "total": 8600,
     "prompt": 6500,
-    "completion": 2100
+    "reasoning": 1500,
+    "output": 600,
+    "total": 8600
   },
   "spec_path": "prompts/01_20260504_check_architecture.md",
   "dependencies": [],

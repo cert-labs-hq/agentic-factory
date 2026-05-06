@@ -14,6 +14,7 @@ Generate an Agentic code implementation supply chain to deliver product implemen
 ## 3. The Logic of Slices
 The project is divided into discrete units of work called **Slices**.
 *   **Atomic Storage:** Each slice maintains its own JSON metadata in `.factory/slices/[ID].json` for distributed development.
+*   **Detailed Definition:** For a full field-by-field explanation of the slice metadata, see [Slice Metadata Definition](specs/infrastructure/001-slice-metadata-definition.md).
 *   **Aggregated Consumption:** A single `slices.json` (or `index.json`) is generated from individual slices to serve as the unified data source for the frontend.
 *   **Compliance:** All slice metadata MUST strictly adhere to the schema defined in `.factory/slices/schema_file.json`.
 *   The metadata schema tracks the state, token cost, and implementation history.
@@ -113,7 +114,10 @@ Every successful implementation response **MUST** conclude with a JSON block in 
 
 ### 2.2 Universal Telemetry Logging
 
-*   **Mandatory Capture:** EVERY interaction (markdown prompts, free-text chat, or ad-hoc tasks) MUST be recorded in `/.factory/telemetry.json`.
+*   **Mandatory Capture:** EVERY interaction (markdown prompts, free-text chat, or ad-hoc tasks) MUST be recorded in `/.factory/telemetry.json` as the final action of the session.
+*   **Prompt Source Protocol:**
+    *   For tasks derived from files: `prompt_source` = `[path_to_file]`.
+    *   For manual CLI input: `prompt_source` = `MANUAL: [full_input_text]`. The full text of the user's prompt must be captured.
 *   **Context Categorization:** 
     *   Tasks derived from `prompts/` must use their Slice ID.
     *   Ad-hoc chat or configuration changes must use the context `GENERAL` or `AD-HOC`.
