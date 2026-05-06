@@ -1,17 +1,17 @@
 {
   "total_cost": {
-    "prompt_tokens": 355500,
-    "reasoning_tokens": 69100,
-    "output_tokens": 36850,
-    "total_tokens": 461450
+    "prompt_tokens": 540500,
+    "reasoning_tokens": 134100,
+    "output_tokens": 56850,
+    "total_tokens": 731450
   },
   "phases": {
     "foundations": {
-      "prompt_tokens": 352500,
-      "reasoning_tokens": 68100,
-      "output_tokens": 35350,
-      "total_tokens": 455950,
-      "count": 18
+      "prompt_tokens": 537500,
+      "reasoning_tokens": 133100,
+      "output_tokens": 55350,
+      "total_tokens": 725950,
+      "count": 22
     },
     "specs": {
       "prompt_tokens": 3000,
@@ -23,11 +23,11 @@
   },
   "slices": {
     "Foundational": {
-      "prompt_tokens": 96420,
-      "reasoning_tokens": 20728,
-      "output_tokens": 11045,
-      "total_tokens": 128193,
-      "count": 6
+      "prompt_tokens": 146420,
+      "reasoning_tokens": 40728,
+      "output_tokens": 16045,
+      "total_tokens": 203193,
+      "count": 7
     },
     "FACTORY-ALIGN-001": {
       "prompt_tokens": 6500,
@@ -119,6 +119,37 @@
       "output_tokens": 6000,
       "total_tokens": 63000,
       "count": 1
+    },
+    "FACTORY-QUOTA-STATE-008": {
+      "prompt_tokens": 45000,
+      "reasoning_tokens": 15000,
+      "output_tokens": 5000,
+      "total_tokens": 65000,
+      "count": 1
+    },
+    "FACTORY-QUOTA-FIX-009": {
+      "prompt_tokens": 45000,
+      "reasoning_tokens": 15000,
+      "output_tokens": 5000,
+      "total_tokens": 65000,
+      "count": 1
+    },
+    "FACTORY-QUOTA-TRANSPARENCY-010": {
+      "prompt_tokens": 45000,
+      "reasoning_tokens": 15000,
+      "output_tokens": 5000,
+      "total_tokens": 65000,
+      "count": 1
     }
+  },
+  "quota_governance": {
+    "daily_limit": 500000,
+    "used_24h": 573000,
+    "used_percentage": "114.6%",
+    "remaining": 0,
+    "remaining_percentage": "0.0%",
+    "hours_to_reset": "5h 44m",
+    "last_updated_at": "2026-05-06T18:15:05.168958+00:00",
+    "next_reset_at": "2026-05-07T00:00:00+00:00"
   }
 }

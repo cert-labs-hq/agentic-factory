@@ -140,3 +140,12 @@ A slice is considered `In Review` only when:
 1.  A Pull Request (PR) has been opened.
 2.  The JSON metadata has been updated with the PR link.
 3.  The `usage_metadata` for the entire implementation session has been recorded.
+
+---
+
+## 11. Quota Governance (FinOps Control)
+The factory floor is protected by strict token quotas to prevent runaway costs and ensure resource availability.
+
+*   **Daily Budget:** The project operates under a hard daily limit of **500,000 tokens**.
+*   **Monitoring:** The `quota_governance` object in `telemetry.json` tracks real-time utilization.
+*   **Throttle Protocol:** If `used_percentage` exceeds 90%, Agents MUST prioritize "High Signal" brevity and minimize tool calls. If 100% is reached, the factory enters **Emergency Stop** state until the quota resets.

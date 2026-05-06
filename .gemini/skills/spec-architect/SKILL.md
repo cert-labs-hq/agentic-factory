@@ -18,7 +18,11 @@ When this skill is triggered, you MUST NOT write the full specification yet. Ins
 *   Are there any deterministic "Hard Rules" (e.g., OIDC, specific permissions) this spec must enforce?
 
 ### 💰 FinOps & Token Economics
-*   **Complexity Rating**: Low / Medium / High.
+*   **Complexity Rating**: Categorize based on the following mapping:
+    *   **Low**: < 5,000 tokens (Single file refactor/JSON update).
+    *   **Medium**: 5,000 - 15,000 tokens (New component/Logic flow).
+    *   **High**: > 15,000 tokens (Full slice implementation/Major architectural change).
+*   **Quota Constraint**: If Complexity is **High**, you MUST verify that `quota_governance.remaining` in `telemetry.json` is > 20,000 before proposing an implementation date or proceeding to the draft.
 *   **Estimated Generation Cost**: How many tokens will it likely take to write the full Markdown spec based on context size?
 *   **Implementation Overhead**: Does this spec introduce high-token-cost logic (e.g., recursive loops or heavy reasoning)?
 
