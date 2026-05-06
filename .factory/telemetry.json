@@ -1,8 +1,8 @@
 {
   "project_total_cost": {
-    "input_tokens": 105500,
-    "reasoning_tokens": 14300,
-    "output_tokens": 8350
+    "input_tokens": 127500,
+    "reasoning_tokens": 16100,
+    "output_tokens": 9350
   },
   "logs": [
     {
@@ -10,6 +10,7 @@
       "context": "setup_repo_structure",
       "phase": "foundations",
       "status": "success",
+      "prompt_source": "MANUAL",
       "tokens": { "input": 1420, "reasoning": 128, "output": 495 }
     },
     {
@@ -17,6 +18,7 @@
       "context": "FACTORY-ALIGN-001",
       "phase": "foundations",
       "status": "success",
+      "prompt_source": "MANUAL",
       "tokens": { "input": 6500, "reasoning": 1500, "output": 600 }
     },
     {
@@ -24,6 +26,7 @@
       "context": "FACTORY-SYNC-PROT-003",
       "phase": "foundations",
       "status": "success",
+      "prompt_source": "MANUAL",
       "tokens": { "input": 11200, "reasoning": 1200, "output": 450 }
     },
     {
@@ -31,6 +34,7 @@
       "context": "AD-HOC-ALIGNMENT",
       "phase": "foundations",
       "status": "success",
+      "prompt_source": "MANUAL",
       "tokens": { "input": 11500, "reasoning": 800, "output": 600 }
     },
     {
@@ -38,6 +42,7 @@
       "context": "FACTORY-ALIGN-002",
       "phase": "foundations",
       "status": "success",
+      "prompt_source": "MANUAL",
       "tokens": { "input": 14380, "reasoning": 2372, "output": 1855 }
     },
     {
@@ -45,6 +50,7 @@
       "context": "FACTORY-TELEMETRY-SUMMARY-003",
       "phase": "foundations",
       "status": "success",
+      "prompt_source": "prompts/foundations/03_20260505_telemetry_summaryzed_data.md",
       "tokens": { "input": 15000, "reasoning": 2000, "output": 1000 }
     },
     {
@@ -52,6 +58,7 @@
       "context": "FACTORY-ALIGN-004",
       "phase": "foundations",
       "status": "success",
+      "prompt_source": "MANUAL",
       "tokens": { "input": 16000, "reasoning": 2500, "output": 1200 }
     },
     {
@@ -59,6 +66,7 @@
       "context": "AD-HOC-SEC-REVIEW",
       "phase": "foundations",
       "status": "success",
+      "prompt_source": "MANUAL",
       "tokens": { "input": 3500, "reasoning": 800, "output": 450 }
     },
     {
@@ -66,6 +74,7 @@
       "context": "AD-HOC-SEC-UPDATE",
       "phase": "foundations",
       "status": "success",
+      "prompt_source": "MANUAL",
       "tokens": { "input": 5000, "reasoning": 1000, "output": 500 }
     },
     {
@@ -73,7 +82,16 @@
       "context": "FACTORY-QA-ENHANCE-005",
       "phase": "foundations",
       "status": "success",
+      "prompt_source": "prompts/foundations/05_20260505_qa.md",
       "tokens": { "input": 21000, "reasoning": 2000, "output": 1200 }
+    },
+    {
+      "timestamp": "2026-05-05T15:30:00Z",
+      "context": "FACTORY-PROMPT-REF-006",
+      "phase": "foundations",
+      "status": "success",
+      "prompt_source": "prompts/foundations/06_20260505_prompt_reference.md",
+      "tokens": { "input": 22000, "reasoning": 1800, "output": 1000 }
     }
   ]
 }

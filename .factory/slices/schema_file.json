@@ -74,6 +74,10 @@
       "type": "string",
       "description": "Path to the markdown specification or prompt file"
     },
+    "prompt_source": {
+      "type": "string",
+      "description": "The origin of the prompt: either a file path or 'MANUAL' for direct user input"
+    },
     "dependencies": {
       "type": "array",
       "items": {
