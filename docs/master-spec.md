@@ -2,17 +2,19 @@
 # 🛠️ Master Specification: Agentic Code Supply Chain
 
 ## 1. System Objective
-Generate an Agentic code implementation supply chain to generate a product implementation based on a plan and spec-driven development.
+Generate an Agentic code implementation supply chain to deliver product implementations based on a static, spec-driven development model.
 
 ## 2. Infrastructure Constraints
 *   **Single Source of Truth:** A GitHub repository.
+*   **Static Architecture:** Data consumption is purely via static JSON files (Slices and Registry) hosted on GitHub/GitHub Pages. No live backend API is utilized.
 *   **Inputs:** All code generation must be derived from provided specs and plans.
 *   **Trigger:** Code generation is strictly executed via GitHub Actions.
-*   **Telemetry:** A web-based dashboard will visualize live updates using the JSON metadata of each slice.
+*   **Telemetry:** A web-based dashboard will visualize live updates using the aggregated JSON metadata of all slices.
 
 ## 3. The Logic of Slices
 The project is divided into discrete units of work called **Slices**.
-*   Each slice must have a corresponding JSON metadata schema.
+*   **Atomic Storage:** Each slice maintains its own JSON metadata in `.factory/slices/[ID].json` for distributed development.
+*   **Aggregated Consumption:** A single `slices.json` (or `index.json`) is generated from individual slices to serve as the unified data source for the frontend.
 *   **Compliance:** All slice metadata MUST strictly adhere to the schema defined in `.factory/slices/schema_file.json`.
 *   The metadata schema tracks the state, token cost, and implementation history.
 

@@ -1,8 +1,8 @@
 {
   "project_total_cost": {
-    "input_tokens": 130500,
-    "reasoning_tokens": 17100,
-    "output_tokens": 10850
+    "input_tokens": 155500,
+    "reasoning_tokens": 21100,
+    "output_tokens": 12850
   },
   "logs": [
     {
@@ -100,7 +100,14 @@
       "status": "success",
       "prompt_source": "prompts/specs/01_20260505_slices_overview.md",
       "tokens": { "input": 3000, "reasoning": 1000, "output": 1500 }
+    },
+    {
+      "timestamp": "2026-05-06T10:00:00Z",
+      "context": "FACTORY-SLICE-ALIGN-007",
+      "phase": "foundations",
+      "status": "success",
+      "prompt_source": "prompts/specs/02_20260505_slices_refinement.md",
+      "tokens": { "input": 25000, "reasoning": 4000, "output": 2000 }
     }
   ]
-
 }
