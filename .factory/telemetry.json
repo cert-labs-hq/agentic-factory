@@ -1,8 +1,8 @@
 {
   "project_total_cost": {
-    "input_tokens": 76000,
-    "reasoning_tokens": 10500,
-    "output_tokens": 6200
+    "input_tokens": 84500,
+    "reasoning_tokens": 12300,
+    "output_tokens": 7150
   },
   "logs": [
     {
@@ -53,6 +53,20 @@
       "phase": "foundations",
       "status": "success",
       "tokens": { "input": 16000, "reasoning": 2500, "output": 1200 }
+    },
+    {
+      "timestamp": "2026-05-05T14:15:00Z",
+      "context": "AD-HOC-SEC-REVIEW",
+      "phase": "foundations",
+      "status": "success",
+      "tokens": { "input": 3500, "reasoning": 800, "output": 450 }
+    },
+    {
+      "timestamp": "2026-05-05T14:20:00Z",
+      "context": "AD-HOC-SEC-UPDATE",
+      "phase": "foundations",
+      "status": "success",
+      "tokens": { "input": 5000, "reasoning": 1000, "output": 500 }
     }
   ]
 }

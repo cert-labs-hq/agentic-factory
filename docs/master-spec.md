@@ -44,7 +44,14 @@ A slice is only considered "Warehoused" when:
 ## 7. Operational Governance
 The day-to-day execution of the factory floor is governed by the **Factory Protocol** 
 
-## 8. Spec-Driven Development Phases
+## 8 Security
+* All code must adhere to OWASP Top 10 for LLM Applications
+* No Critical or High vulnerabilities allowed in the main branch.
+* The codebase must be free from secrets or api leaks
+* The tools for SAST will be Semgrep. FOR sca will be owasp dependency check.
+* All specs and prompts must be secure againt Input Integrity.
+
+## 9. Spec-Driven Development Phases
 The lifecycle of a product implementation is divided into five distinct phases, each represented by a dedicated directory in `prompts/`:
 
 1.  **Foundations:** Initial setup, architectural alignment, and core protocol definitions.
