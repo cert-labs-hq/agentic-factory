@@ -1,23 +1,123 @@
 {
   "total_cost": {
-    "prompt_tokens": 310500,
-    "reasoning_tokens": 57100,
-    "output_tokens": 30850,
-    "total_tokens": 398450
+    "prompt_tokens": 355500,
+    "reasoning_tokens": 69100,
+    "output_tokens": 36850,
+    "total_tokens": 461450
   },
   "phases": {
     "foundations": {
-      "prompt_tokens": 307500,
-      "reasoning_tokens": 56100,
-      "output_tokens": 29350,
-      "total_tokens": 392950,
-      "count": 17
+      "prompt_tokens": 352500,
+      "reasoning_tokens": 68100,
+      "output_tokens": 35350,
+      "total_tokens": 455950,
+      "count": 18
     },
     "specs": {
       "prompt_tokens": 3000,
       "reasoning_tokens": 1000,
       "output_tokens": 1500,
       "total_tokens": 5500,
+      "count": 1
+    }
+  },
+  "slices": {
+    "Foundational": {
+      "prompt_tokens": 96420,
+      "reasoning_tokens": 20728,
+      "output_tokens": 11045,
+      "total_tokens": 128193,
+      "count": 6
+    },
+    "FACTORY-ALIGN-001": {
+      "prompt_tokens": 6500,
+      "reasoning_tokens": 1500,
+      "output_tokens": 600,
+      "total_tokens": 8600,
+      "count": 1
+    },
+    "FACTORY-SYNC-PROT-003": {
+      "prompt_tokens": 11200,
+      "reasoning_tokens": 1200,
+      "output_tokens": 450,
+      "total_tokens": 12850,
+      "count": 1
+    },
+    "FACTORY-ALIGN-002": {
+      "prompt_tokens": 14380,
+      "reasoning_tokens": 2372,
+      "output_tokens": 1855,
+      "total_tokens": 18607,
+      "count": 1
+    },
+    "FACTORY-TELEMETRY-SUMMARY-003": {
+      "prompt_tokens": 15000,
+      "reasoning_tokens": 2000,
+      "output_tokens": 1000,
+      "total_tokens": 18000,
+      "count": 1
+    },
+    "FACTORY-ALIGN-004": {
+      "prompt_tokens": 16000,
+      "reasoning_tokens": 2500,
+      "output_tokens": 1200,
+      "total_tokens": 19700,
+      "count": 1
+    },
+    "FACTORY-QA-ENHANCE-005": {
+      "prompt_tokens": 21000,
+      "reasoning_tokens": 2000,
+      "output_tokens": 1200,
+      "total_tokens": 24200,
+      "count": 1
+    },
+    "FACTORY-PROMPT-REF-006": {
+      "prompt_tokens": 22000,
+      "reasoning_tokens": 1800,
+      "output_tokens": 1000,
+      "total_tokens": 24800,
+      "count": 1
+    },
+    "FACTORY-SLICE-OVERVIEW-001": {
+      "prompt_tokens": 3000,
+      "reasoning_tokens": 1000,
+      "output_tokens": 1500,
+      "total_tokens": 5500,
+      "count": 1
+    },
+    "FACTORY-SLICE-ALIGN-007": {
+      "prompt_tokens": 25000,
+      "reasoning_tokens": 4000,
+      "output_tokens": 2000,
+      "total_tokens": 31000,
+      "count": 1
+    },
+    "FACTORY-METADATA-DOC-008": {
+      "prompt_tokens": 25000,
+      "reasoning_tokens": 5000,
+      "output_tokens": 2500,
+      "total_tokens": 32500,
+      "count": 1
+    },
+    "FACTORY-METADATA-ALIGN-009": {
+      "prompt_tokens": 25000,
+      "reasoning_tokens": 6000,
+      "output_tokens": 3000,
+      "total_tokens": 34000,
+      "count": 1
+    },
+    "FACTORY-SKILL-ALIGN-010": {
+      "prompt_tokens": 30000,
+      "reasoning_tokens": 7000,
+      "output_tokens": 3500,
+      "total_tokens": 40500,
+      "count": 1
+    },
+    "FACTORY-NEW-TELEMETRY-INFO-007": {
+      "prompt_tokens": 45000,
+      "reasoning_tokens": 12000,
+      "output_tokens": 6000,
+      "total_tokens": 63000,
       "count": 1
     }
   }

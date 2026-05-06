@@ -15,8 +15,6 @@ def analyze():
     logs = data.get('logs', [])
     project_total = data.get('project_total_cost', {})
     
-    # Map old keys to new keys if necessary during transition, 
-    # but based on previous steps, telemetry.json is already updated.
     summary = {
         "total_cost": {
             "prompt_tokens": project_total.get('prompt', 0),
@@ -24,13 +22,16 @@ def analyze():
             "output_tokens": project_total.get('output', 0),
             "total_tokens": project_total.get('total', 0)
         },
-        "phases": {}
+        "phases": {},
+        "slices": {}
     }
 
     for log in logs:
         phase = log.get('phase', 'unknown')
+        slice_id = log.get('slice_id', 'unknown')
         tokens = log.get('tokens', {})
         
+        # Aggregate by Phase
         if phase not in summary['phases']:
             summary['phases'][phase] = {
                 "prompt_tokens": 0,
@@ -41,12 +42,28 @@ def analyze():
             }
         
         p = summary['phases'][phase]
-        # Support both old and new keys for resilience during script execution
-        p['prompt_tokens'] += tokens.get('prompt', tokens.get('input', 0))
+        p['prompt_tokens'] += tokens.get('prompt', 0)
         p['reasoning_tokens'] += tokens.get('reasoning', 0)
         p['output_tokens'] += tokens.get('output', 0)
         p['total_tokens'] += tokens.get('total', 0)
         p['count'] += 1
+
+        # Aggregate by Slice
+        if slice_id not in summary['slices']:
+            summary['slices'][slice_id] = {
+                "prompt_tokens": 0,
+                "reasoning_tokens": 0,
+                "output_tokens": 0,
+                "total_tokens": 0,
+                "count": 0
+            }
+        
+        s = summary['slices'][slice_id]
+        s['prompt_tokens'] += tokens.get('prompt', 0)
+        s['reasoning_tokens'] += tokens.get('reasoning', 0)
+        s['output_tokens'] += tokens.get('output', 0)
+        s['total_tokens'] += tokens.get('total', 0)
+        s['count'] += 1
 
     with open(SUMMARY_PATH, 'w') as f:
         json.dump(summary, f, indent=2)

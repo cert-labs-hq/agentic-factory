@@ -119,6 +119,7 @@ Every successful implementation response **MUST** conclude with a JSON block in 
     *   For tasks derived from files: `prompt_source` = `[path_to_file]`.
     *   For manual CLI input: `prompt_source` = `MANUAL: [full_input_text]`. The full text of the user's prompt must be captured.
 *   **Context Categorization:** 
+    *   **Slice ID Enforcement:** EVERY entry MUST include a `slice_id` field. For foundational setup tasks without a specific ID, use `Foundational`.
     *   Tasks derived from `prompts/` must use their Slice ID.
     *   Ad-hoc chat or configuration changes must use the context `GENERAL` or `AD-HOC`.
 *   **Total Cost Tracking:** The `project_total_cost` field must be updated incrementally with every new log entry.
