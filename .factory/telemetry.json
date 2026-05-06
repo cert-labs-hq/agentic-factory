@@ -1,8 +1,8 @@
 {
   "project_total_cost": {
-    "input_tokens": 84500,
-    "reasoning_tokens": 12300,
-    "output_tokens": 7150
+    "input_tokens": 105500,
+    "reasoning_tokens": 14300,
+    "output_tokens": 8350
   },
   "logs": [
     {
@@ -67,6 +67,13 @@
       "phase": "foundations",
       "status": "success",
       "tokens": { "input": 5000, "reasoning": 1000, "output": 500 }
+    },
+    {
+      "timestamp": "2026-05-05T15:00:00Z",
+      "context": "FACTORY-QA-ENHANCE-005",
+      "phase": "foundations",
+      "status": "success",
+      "tokens": { "input": 21000, "reasoning": 2000, "output": 1200 }
     }
   ]
 }

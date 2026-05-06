@@ -56,7 +56,7 @@ The lifecycle of a product implementation is divided into five distinct phases, 
 
 1.  **Foundations:** Initial setup, architectural alignment, and core protocol definitions.
 2.  **Specs:** Detailed technical specifications for individual features or components.
-3.  **Planning:** Strategic breakdown of specs into actionable slices and implementation plans.
+3.  **Planning:** Strategic breakdown of specs into actionable slices. This phase MUST produce testable Python class designs (interfaces or stubs) to ensure architectural integrity before the Implementation phase.
 4.  **Implementation:** Active code generation and development turns.
 5.  **Validation:** Testing, QA, and verification of implemented slices against the original specs.
 
