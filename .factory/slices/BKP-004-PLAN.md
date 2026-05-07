@@ -1,5 +1,3 @@
-# Implementation Plan: BKP-004-REGISTRY-GENERATOR (v1.1)
-
 ## 🎯 Architectural Alignment
 * **Target Spec**: `docs/specs/product/004-registry-generator.md`
 * **Scope**: 
@@ -33,13 +31,18 @@
     * **DoD**: Script exits with code 1 if the generated registry violates the contract.
     * **Validation**: Temporary break a slice's JSON and ensure the generator fails.
 
-5. **Step 5: CI/CD Registry Hook**
+5. **Step 5: Manual Runtime Verification**
+    * **Description**: Execute the full script locally using actual project slices to ensure integration readiness.
+    * **DoD**: `.factory/index.json` is generated correctly without errors.
+    * **Validation**: `python3 src/registry_generator.py`
+
+6. **Step 6: CI/CD Registry Hook**
     * **Description**: Add a "Final Check" step to the existing GitHub Action to run this generator and commit the `index.json`.
     * **DoD**: GitHub Pages dashboard shows updated metrics after a push.
     * **Validation**: Check the "Actions" tab for a successful registry sync.
 
 ## 💰 FinOps Forecast (Rating)
 * **Complexity**: Medium
-* **Forecasted Input**: 28,000 tokens (Context + all individual slices)
+* **Forecasted Input**: 28,000 tokens
 * **Forecasted Reasoning**: 4,000 tokens
 * **Cache Strategy**: The Registry Generator will become the "Heavy Reader." By keeping the slice structure consistent, we maximize the **83.8% cache hit rate** seen in your `/stats`.
