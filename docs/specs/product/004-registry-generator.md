@@ -8,7 +8,7 @@ Provide a deterministic mechanism to aggregate distributed slice metadata into a
 - **Inputs:** 
     - Master Schema: `.factory/contracts/schema_file.json`
     - Slice Directory: `.factory/slices/` (excluding the schema file itself)
-- **Output:** `.factory/index.json`
+- **Output:** `.factory/slices/index.json`
 - **Execution:** Triggered via GitHub Actions on every push to the `main` branch or when a slice is updated.
 
 ## 3. Functional Specifications

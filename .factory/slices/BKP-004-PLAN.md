@@ -2,7 +2,7 @@
 * **Target Spec**: `docs/specs/product/004-registry-generator.md`
 * **Scope**: 
     - `src/registry_generator.py` (New)
-    - `.factory/index.json` (New/Output)
+    - `.factory/slices/index.json` (New/Output)
     - `.factory/contracts/aggregate_slice_info.json` (Verify Existing)
     - `tests/test_registry_generator.py` (New)
 
