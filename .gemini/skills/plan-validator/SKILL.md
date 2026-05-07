@@ -7,8 +7,8 @@ When triggered, you MUST NOT generate implementation code. Your goal is to produ
 
 ### 1. Verification Phase
 * **Identity Check**: Confirm the target **Slice ID** (e.g., BKP-004).
-* **State Verification**: Verify that the slice is currently in Phase: `specs` and Status: `Planned`. If not, STOP and inform the user.
-* **Immediate Transition**: Update the slice metadata JSON (`.factory/slices/[ID].json`) to Status: `In Progress` and Phase: `planning` BEFORE starting the plan.
+* **State Verification**: Verify that the slice is currently in **Phase: `specs`** and **Status: `Planned`** (per `docs/specs/foundations/005-skill-transition-matrix.md`). If not, STOP and inform the user.
+* **Immediate Transition**: Update the slice metadata JSON (`.factory/slices/[ID].json`) to **Status: `In Progress`** and **Phase: `planning`** BEFORE starting the plan.
 * **Contract Check**: Identify which files in `.factory/contracts/` must be enforced.
 * **Halt-on-Ambiguity**: If requirements are missing, trigger the DRV-FAILURE protocol instead of planning.
 

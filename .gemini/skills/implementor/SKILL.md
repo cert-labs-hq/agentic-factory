@@ -6,9 +6,9 @@
 When triggered, you MUST follow the Spec-Driven Development (SDD) protocol to move a slice from `Planned` to `In Review`.
 
 ### 1. Ingestion & Setup
-* **State Verification**: Verify that the slice metadata (`.factory/slices/[ID].json`) is currently in **Phase: `planning`** and **Status: `Planned`**. If not, STOP and inform the user.
+* **State Verification**: Verify that the slice metadata (`.factory/slices/[ID].json`) is currently in **Phase: `planning`** and **Status: `Planned`** (per `docs/specs/foundations/005-skill-transition-matrix.md`). If not, STOP and inform the user.
 * **Immediate Transition**: Update metadata to **Status: `In Progress`** and **Phase: `implementation`** BEFORE starting any code work.
-* **Branching (Mandatory)**: Create and switch to a dedicated feature branch: `factory/slice-[ID]`. DO NOT work in `main`.
+* **Branching (Mandatory)**: Create and switch to a dedicated feature branch: `factory/slice-[ID]`. DO NOT work in `main`. This is a non-negotiable requirement.
 * **Context Load**: Read the following files for the target [ID]:
     - Metadata: `.factory/slices/[ID].json`
     - Specification: `docs/specs/[ID].md`

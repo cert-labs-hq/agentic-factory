@@ -1,13 +1,13 @@
 {
   "metadata": {
-    "generated_at": "2026-05-07T16:16:37.873953Z",
+    "generated_at": "2026-05-07T17:01:48.258492Z",
     "total_slices": 1,
     "status_summary": {
       "Proposed": 0,
       "Planned": 0,
       "Quota-Blocked": 0,
-      "In Progress": 1,
-      "In Review": 0,
+      "In Progress": 0,
+      "In Review": 1,
       "Approved": 0,
       "Warehoused": 0,
       "Rejected": 0
@@ -25,11 +25,11 @@
     {
       "id": "BKP-004",
       "title": "Registry Generator",
-      "status": "In Progress",
+      "status": "In Review",
       "created_at": "2026-05-06T18:45:00Z",
-      "updated_at": "2026-05-07T23:45:00Z",
+      "updated_at": "2026-05-07T23:55:00Z",
       "assigned_to": "gemini-cli",
-      "phase": "implementation",
+      "phase": "validation",
       "complexity": "Medium",
       "forecast": {
         "complexity": "Medium",
