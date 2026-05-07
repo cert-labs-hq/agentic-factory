@@ -47,6 +47,31 @@
       ],
       "description": "The development phase this slice belongs to"
     },
+    "complexity": {
+      "type": "string",
+      "enum": ["Low", "Medium", "High"],
+      "description": "Initial assessment of the slice complexity"
+    },
+    "forecast": {
+      "type": "object",
+      "properties": {
+        "complexity": {
+          "type": "string",
+          "enum": ["Low", "Medium", "High"]
+        },
+        "estimated_tokens": {
+          "type": "object",
+          "properties": {
+            "prompt": { "type": "integer", "minimum": 0 },
+            "reasoning": { "type": "integer", "minimum": 0 },
+            "output": { "type": "integer", "minimum": 0 }
+          },
+          "required": ["prompt", "reasoning", "output"]
+        }
+      },
+      "required": ["complexity", "estimated_tokens"],
+      "description": "Token and complexity forecast defined during the Planning phase"
+    },
     "spec_path": {
       "type": "string",
       "description": "Path to the markdown specification or prompt file"

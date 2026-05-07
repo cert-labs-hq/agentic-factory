@@ -4,7 +4,7 @@ This document provides a detailed explanation of the JSON metadata schema used t
 
 ## 1. Schema Overview
 
-The schema is defined in `.factory/slices/schema_file.json`. It ensures consistency across all development phases and provides the necessary data for the FinOps Dashboard.
+The schema is defined in `.factory/contracts/schema_file.json`. It ensures consistency across all development phases and provides the necessary data for the FinOps Dashboard.
 
 ## 2. Field Definitions
 

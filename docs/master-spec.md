@@ -16,8 +16,8 @@ The project is divided into discrete units of work called **Slices**.
 *   **Atomic Storage:** Each slice maintains its own JSON metadata in `.factory/slices/[ID].json` for distributed development.
 *   **Detailed Definition:** For a full field-by-field explanation of the slice metadata, see [Slice Metadata Definition](specs/foundations/001-slice-metadata-definition.md).
 *   **Aggregated Consumption:** A single `slices.json` (or `index.json`) is generated from individual slices to serve as the unified data source for the frontend.
-*   **Compliance:** All slice metadata MUST strictly adhere to the schema defined in `.factory/slices/schema_file.json`.
-*   The metadata schema tracks the state, token cost, and implementation history.
+*   **Compliance:** All slice metadata MUST strictly adhere to the schema defined in `.factory/contracts/schema_file.json`.
+*   The metadata schema tracks the state and implementation history. Token usage is tracked exclusively via the central telemetry system, governed by `.factory/contracts/telemetry_schema.json`.
 
 ## 4. State Machine (The Factory Floor)
 Agents and humans must strictly adhere to the following states:

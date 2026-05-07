@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Agentic Factory Registry Schema",
+  "description": "Deterministic contract for the unified project registry used by the Frontend Dashboard.",
+  "type": "object",
+  "required": ["metadata", "slices"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": [
+        "generated_at", 
+        "total_slices", 
+        "status_summary", 
+        "global_finops"
+      ],
+      "properties": {
+        "generated_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO-8601 timestamp of the generation event."
+        },
+        "total_slices": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "status_summary": {
+          "type": "object",
+          "required": [
+            "Planned", 
+            "Quota-Blocked", 
+            "In Progress", 
+            "In Review", 
+            "Approved", 
+            "Warehoused", 
+            "Rejected"
+          ],
+          "properties": {
+            "Planned": { "type": "integer", "minimum": 0 },
+            "Quota-Blocked": { "type": "integer", "minimum": 0 },
+            "In Progress": { "type": "integer", "minimum": 0 },
+            "In Review": { "type": "integer", "minimum": 0 },
+            "Approved": { "type": "integer", "minimum": 0 },
+            "Warehoused": { "type": "integer", "minimum": 0 },
+            "Rejected": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "global_finops": {
+          "type": "object",
+          "required": [
+            "total_prompt_tokens",
+            "total_reasoning_tokens",
+            "total_cache_read_tokens",
+            "total_output_tokens",
+            "total_combined_tokens",
+            "estimated_usd_saved"
+          ],
+          "properties": {
+            "total_prompt_tokens": { "type": "integer", "minimum": 0 },
+            "total_reasoning_tokens": { "type": "integer", "minimum": 0 },
+            "total_cache_read_tokens": { "type": "integer", "minimum": 0 },
+            "total_output_tokens": { "type": "integer", "minimum": 0 },
+            "total_combined_tokens": { "type": "integer", "minimum": 0 },
+            "estimated_usd_saved": { "type": "number", "minimum": 0 }
+          }
+        }
+      }
+    },
+    "slices": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "status"],
+        "properties": {
+          "id": { 
+            "type": "string", 
+            "pattern": "^[A-Z]{3}-[0-9]{3}$" 
+          },
+          "status": { 
+            "type": "string",
+            "enum": [
+              "Planned", "Quota-Blocked", "In Progress", 
+              "In Review", "Approved", "Warehoused", "Rejected"
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  }
+}

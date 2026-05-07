@@ -5,7 +5,7 @@ This document serves as the master blueprint for the **Agentic Factory** MVP, de
 ## 1. Core Infrastructure (Foundations)
 *   **BKP-001-BOOTSTRAP**: Initial repository structure and schema definition. [Status: **Warehoused**]
 *   **BKP-002-TELEMETRY-SYSTEM**: Implementation of the universal telemetry logging protocol for token usage. [Status: **Warehoused**]
-*   **BKP-003-SCHEMA-VALIDATOR**: Automated validation of slice JSONs against the master contract to ensure architectural alignment. [Status: **Planned - P0**]
+*   **BKP-003-SCHEMA-VALIDATOR**: Automated validation of slice JSONs against the master contract (`.factory/contracts/schema_file.json`) to ensure architectural alignment. [Status: **Planned - P0**]
 
 ## 2. Warehouse & Logistics (Backend)
 *   **BKP-004-REGISTRY-GENERATOR**: Logic to aggregate individual slice JSONs into a single `index.json` registry for static consumption. [Status: **Planned - P0**]

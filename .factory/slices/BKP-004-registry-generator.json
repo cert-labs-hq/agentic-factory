@@ -6,6 +6,7 @@
   "updated_at": "2026-05-06T18:45:00Z",
   "assigned_to": "gemini-cli",
   "phase": "specs",
+  "complexity": "Medium",
   "spec_path": "docs/specs/product/004-registry-generator.md",
   "dependencies": [],
   "metadata_version": "1.0"

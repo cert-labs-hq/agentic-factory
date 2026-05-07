@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Telemetry Schema",
+  "type": "object",
+  "properties": {
+    "project_total_cost": {
+      "type": "object",
+      "properties": {
+        "prompt": { "type": "integer", "minimum": 0 },
+        "reasoning": { "type": "integer", "minimum": 0 },
+        "output": { "type": "integer", "minimum": 0 },
+        "total": { "type": "integer", "minimum": 0 }
+      },
+      "required": ["prompt", "reasoning", "output", "total"]
+    },
+    "logs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp": { "type": "string", "format": "date-time" },
+          "context": { "type": "string" },
+          "phase": { "type": "string" },
+          "slice_id": { "type": "string" },
+          "status": { "type": "string" },
+          "prompt_source": { "type": "string" },
+          "tokens": {
+            "type": "object",
+            "properties": {
+              "prompt": { "type": "integer", "minimum": 0 },
+              "reasoning": { "type": "integer", "minimum": 0 },
+              "output": { "type": "integer", "minimum": 0 },
+              "total": { "type": "integer", "minimum": 0 }
+            },
+            "required": ["prompt", "reasoning", "output", "total"]
+          }
+        },
+        "required": ["timestamp", "context", "phase", "slice_id", "status", "prompt_source", "tokens"]
+      }
+    },
+    "quota_governance": {
+      "type": "object",
+      "properties": {
+        "daily_limit": { "type": "integer" },
+        "used_24h": { "type": "integer" },
+        "used_percentage": { "type": "string" },
+        "remaining": { "type": "integer" },
+        "remaining_percentage": { "type": "string" },
+        "hours_to_reset": { "type": "string" },
+        "last_updated_at": { "type": "string", "format": "date-time" },
+        "next_reset_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["daily_limit", "used_24h", "used_percentage", "remaining", "remaining_percentage", "hours_to_reset", "last_updated_at", "next_reset_at"]
+    }
+  },
+  "required": ["project_total_cost", "logs", "quota_governance"]
+}

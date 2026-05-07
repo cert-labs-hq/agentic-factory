@@ -1,11 +1,39 @@
 {
   "project_total_cost": {
-    "prompt": 625500,
-    "reasoning": 156100,
-    "output": 65350,
-    "total": 847950
+    "prompt": 725500,
+    "reasoning": 181100,
+    "output": 73350,
+    "total": 980000
   },
   "logs": [
+    {
+      "timestamp": "2026-05-06T19:45:00Z",
+      "context": "SCHEMA-ENHANCEMENT-COMPLEXITY",
+      "phase": "foundations",
+      "slice_id": "Foundational",
+      "status": "success",
+      "prompt_source": "MANUAL: Add to the schema contract information about complexity and forecast...",
+      "tokens": {
+        "prompt": 50000,
+        "reasoning": 10000,
+        "output": 3000,
+        "total": 63000
+      }
+    },
+    {
+      "timestamp": "2026-05-06T19:30:00Z",
+      "context": "FACTORY-CONTRACTS",
+      "phase": "foundations",
+      "slice_id": "Foundational",
+      "status": "success",
+      "prompt_source": "prompts/foundations/10_20260506_contracts_folder.md",
+      "tokens": {
+        "prompt": 50000,
+        "reasoning": 15000,
+        "output": 5000,
+        "total": 70000
+      }
+    },
     {
       "timestamp": "2026-05-06T19:15:00Z",
       "context": "PRODUCT-ONLY-SLICES",
