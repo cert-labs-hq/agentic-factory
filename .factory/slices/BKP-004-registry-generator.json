@@ -7,8 +7,6 @@
   "assigned_to": "gemini-cli",
   "phase": "specs",
   "spec_path": "docs/specs/product/004-registry-generator.md",
-  "dependencies": [
-    "FACTORY-ALIGN-004"
-  ],
+  "dependencies": [],
   "metadata_version": "1.0"
 }
