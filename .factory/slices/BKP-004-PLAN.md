@@ -1,42 +1,45 @@
-# Implementation Plan: BKP-004-REGISTRY-GENERATOR
+# Implementation Plan: BKP-004-REGISTRY-GENERATOR (v1.1)
 
 ## 🎯 Architectural Alignment
 * **Target Spec**: `docs/specs/product/004-registry-generator.md`
 * **Scope**: 
     - `src/registry_generator.py` (New)
     - `.factory/index.json` (New/Output)
-    - `.factory/contracts/aggregate_slice_info.json` (New/Contract)
+    - `.factory/contracts/aggregate_slice_info.json` (Verify Existing)
     - `tests/test_registry_generator.py` (New)
 
 ## 🛡️ Execution Steps (Atomic & Deterministic)
 
-1. **Step 1: Define Aggregated Contract**
-    * **Description**: Create `.factory/contracts/aggregate_slice_info.json` based on the spec.
-    * **Definition of Done (DoD)**: Contract file exists and is valid JSON.
-    * **Validation**: `jsonschema` check against draft-07 (if available) or manual JSON structure verification.
+1. **Step 1: Environment & Contract Setup**
+    * **Description**: Verify `.factory/contracts/aggregate_slice_info.json` exists. Initialize `src/registry_generator.py` with `argparse` for directory inputs.
+    * **DoD**: Script runs with `--help` and contract is readable.
+    * **Validation**: `python3 src/registry_generator.py --help`
 
-2. **Step 2: Core Aggregation Logic**
-    * **Description**: Implement `src/registry_generator.py` to scan `.factory/slices/` for `[A-Z]{3}-[0-9]{3}*.json` and aggregate them.
-    * **Definition of Done (DoD)**: Script successfully identifies and parses all product slices.
-    * **Validation**: Run script with debug logging to print discovered slices.
+2. **Step 2: Deterministic Scanner**
+    * **Description**: Implement `glob` or `os.listdir` with the regex `^[A-Z]{3}-[0-9]{3}.*\.json$`. 
+    * **DoD**: Script ignores non-conforming files and master schemas.
+    * **Validation**: Log the count of discovered slices (e.g., "Found 12 valid slices").
 
-3. **Step 3: Token & Status Summarization**
-    * **Description**: Add logic to read `.factory/telemetry.json` and calculate global status and token metrics.
-    * **Definition of Done (DoD)**: Final `index.json` contains accurate summary data.
-    * **Validation**: Compare `index.json` metadata with `telemetry.json` project totals.
+3. **Step 3: FinOps & Status Aggregation**
+    * **Description**: Iterate through slices to sum tokens. 
+    * **Logic**: Implement the "Savings Formula": 
+      $$Savings = (CacheReadTokens \times 0.10) \times Rate_{standard}$$ 
+      *(Note: Use 0.10 as the multiplier for the cache discount).*
+    * **DoD**: Summary includes `Quota-Blocked` count and `total_cache_read_tokens`.
+    * **Validation**: Manually verify the sum of 2 slices against the generated `index.json`.
 
-4. **Step 4: Automated Testing**
-    * **Description**: Create `tests/test_registry_generator.py` with mock slice data.
-    * **Definition of Done (DoD)**: All tests pass.
-    * **Validation**: `python3 -m pytest tests/test_registry_generator.py`
+4. **Step 4: Self-Validation Layer**
+    * **Description**: Add a `validate_output()` function using `jsonschema` (or a strict dictionary check) before writing to disk.
+    * **DoD**: Script exits with code 1 if the generated registry violates the contract.
+    * **Validation**: Temporary break a slice's JSON and ensure the generator fails.
 
-5. **Step 5: Integration & CI Setup**
-    * **Description**: Run the generator on the actual repo and verify output against the contract.
-    * **Definition of Done (DoD)**: Valid `.factory/index.json` generated.
-    * **Validation**: `python3 src/registry_generator.py && check-jsonschema --schemafile .factory/contracts/aggregate_slice_info.json .factory/index.json`
+5. **Step 5: CI/CD Registry Hook**
+    * **Description**: Add a "Final Check" step to the existing GitHub Action to run this generator and commit the `index.json`.
+    * **DoD**: GitHub Pages dashboard shows updated metrics after a push.
+    * **Validation**: Check the "Actions" tab for a successful registry sync.
 
 ## 💰 FinOps Forecast (Rating)
 * **Complexity**: Medium
-* **Forecasted Input**: 25,000 tokens
-* **Forecasted Reasoning**: 5,000 tokens
-* **Cache Strategy**: Re-use `.factory/contracts/schema_file.json` and `telemetry.json` context across implementation turns.
+* **Forecasted Input**: 28,000 tokens (Context + all individual slices)
+* **Forecasted Reasoning**: 4,000 tokens
+* **Cache Strategy**: The Registry Generator will become the "Heavy Reader." By keeping the slice structure consistent, we maximize the **83.8% cache hit rate** seen in your `/stats`.
