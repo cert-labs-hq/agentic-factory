@@ -40,40 +40,12 @@
     "phase": {
       "type": "string",
       "enum": [
-        "foundations",
         "specs",
         "planning",
         "implementation",
         "validation"
       ],
       "description": "The development phase this slice belongs to"
-    },
-    "token_usage": {
-      "type": "object",
-      "properties": {
-        "total": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "prompt": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "reasoning": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "output": {
-          "type": "integer",
-          "minimum": 0
-        }
-      },
-      "required": [
-        "total",
-        "prompt",
-        "reasoning",
-        "output"
-      ]
     },
     "spec_path": {
       "type": "string",
@@ -102,7 +74,6 @@
     "created_at",
     "updated_at",
     "assigned_to",
-    "token_usage",
     "spec_path",
     "dependencies",
     "metadata_version"

@@ -1,11 +1,25 @@
 {
   "project_total_cost": {
-    "prompt": 580500,
-    "reasoning": 144100,
-    "output": 60850,
-    "total": 785450
+    "prompt": 625500,
+    "reasoning": 156100,
+    "output": 65350,
+    "total": 847950
   },
   "logs": [
+    {
+      "timestamp": "2026-05-06T19:15:00Z",
+      "context": "PRODUCT-ONLY-SLICES",
+      "phase": "foundations",
+      "slice_id": "Foundational",
+      "status": "success",
+      "prompt_source": "prompts/foundations/09_20260506_slice_for_product_only.md",
+      "tokens": {
+        "prompt": 45000,
+        "reasoning": 12000,
+        "output": 4500,
+        "total": 61500
+      }
+    },
     {
       "timestamp": "2026-05-06T18:50:00Z",
       "context": "BKP-004-SPEC",

@@ -6,12 +6,6 @@
   "updated_at": "2026-05-06T18:45:00Z",
   "assigned_to": "gemini-cli",
   "phase": "specs",
-  "token_usage": {
-    "prompt": 0,
-    "reasoning": 0,
-    "output": 0,
-    "total": 0
-  },
   "spec_path": "docs/specs/product/004-registry-generator.md",
   "dependencies": [
     "FACTORY-ALIGN-004"

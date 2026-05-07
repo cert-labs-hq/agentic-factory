@@ -16,8 +16,7 @@ The schema is defined in `.factory/slices/schema_file.json`. It ensures consiste
 | `created_at` | `string` | ISO 8601 timestamp of when the slice was first created. |
 | `updated_at` | `string` | ISO 8601 timestamp of the last modification. |
 | `assigned_to` | `string` | Name or ID of the Agent or Human currently responsible for the slice. |
-| `phase` | `enum` | The development phase: `foundations`, `specs`, `planning`, `implementation`, `validation`. |
-| `token_usage` | `object` | Detailed metrics for LLM consumption (see **Section 4**). |
+| `phase` | `enum` | The development phase: `specs`, `planning`, `implementation`, `validation`. |
 | `spec_path` | `string` | Relative path to the Markdown specification file (e.g., `docs/specs/BKP-001.md`). |
 | `prompt_source` | `string` | The origin of the instruction: a file path or `MANUAL`. |
 | `dependencies` | `array` | A list of Slice IDs that must be completed before this slice can start. |
@@ -36,14 +35,9 @@ The schema is defined in `.factory/slices/schema_file.json`. It ensures consiste
 
 ---
 
-## 4. Token Metrics (`token_usage`)
+## 4. Token Metrics
 
-The `token_usage` block is critical for the FinOps Dashboard and tracking the "Shadow Cost" of AI labor.
-
-*   **`prompt`**: Total tokens sent to the LLM (Input).
-*   **`reasoning`**: Tokens used by the model for internal reasoning/thinking.
-*   **`output`**: Final tokens generated in the response (excluding reasoning).
-*   **`total`**: The sum of `prompt`, `reasoning`, and `output`.
+Token consumption for all slices is tracked exclusively in the **Central Telemetry Ledger** (`.factory/telemetry.json`). Individual slice metadata no longer stores these metrics to ensure a single source of truth for FinOps reporting.
 
 ---
 

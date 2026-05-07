@@ -55,13 +55,12 @@ The day-to-day execution of the factory floor is governed by the **Factory Proto
 * All specs and prompts must be secure againt Input Integrity.
 
 ## 9. Spec-Driven Development Phases
-The lifecycle of a product implementation is divided into five distinct phases, each represented by a dedicated directory in `prompts/`:
+The lifecycle of a product implementation is divided into four distinct phases (excluding Foundations), each represented by a dedicated directory in `prompts/`:
 
-1.  **Foundations:** Initial setup, architectural alignment, and core protocol definitions.
-2.  **Specs:** Detailed technical specifications for individual features or components.
-3.  **Planning:** Strategic breakdown of specs into actionable slices. This phase MUST produce testable Python class designs (interfaces or stubs) to ensure architectural integrity before the Implementation phase.
-4.  **Implementation:** Active code generation and development turns.
-5.  **Validation:** Testing, QA, and verification of implemented slices against the original specs.
+1.  **Specs:** Detailed technical specifications for individual features or components.
+2.  **Planning:** Strategic breakdown of specs into actionable slices. This phase MUST produce testable Python class designs (interfaces or stubs) to ensure architectural integrity before the Implementation phase.
+3.  **Implementation:** Active code generation and development turns.
+4.  **Validation:** Testing, QA, and verification of implemented slices against the original specs.
 
 # 📑 Factory Protocol: Standard Operating Procedure (SOP)
 
@@ -147,5 +146,7 @@ A slice is considered `In Review` only when:
 The factory floor is protected by strict token quotas to prevent runaway costs and ensure resource availability.
 
 *   **Daily Budget:** The project operates under a hard daily limit of **500,000 tokens**.
+*   **Monitoring:** The `quota_governance` object in `telemetry.json` tracks real-time utilization.
+*   **Throttle Protocol:** If `used_percentage` exceeds 90%, Agents MUST prioritize "High Signal" brevity and minimize tool calls. If 100% is reached, the factory enters **Emergency Stop** state until the quota resets.*Daily Budget:** The project operates under a hard daily limit of **500,000 tokens**.
 *   **Monitoring:** The `quota_governance` object in `telemetry.json` tracks real-time utilization.
 *   **Throttle Protocol:** If `used_percentage` exceeds 90%, Agents MUST prioritize "High Signal" brevity and minimize tool calls. If 100% is reached, the factory enters **Emergency Stop** state until the quota resets.
