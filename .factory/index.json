@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-05-07T19:44:49.419602Z",
+    "generated_at": "2026-05-07T20:08:10.555333Z",
     "total_slices": 1,
     "status_summary": {
       "Proposed": 0,
@@ -13,11 +13,11 @@
       "Rejected": 0
     },
     "global_finops": {
-      "total_combined_tokens": 31500,
-      "total_prompt_tokens": 0,
-      "total_reasoning_tokens": 0,
+      "total_prompt_tokens": 25000,
+      "total_reasoning_tokens": 5000,
       "total_cache_read_tokens": 0,
-      "total_output_tokens": 0,
+      "total_output_tokens": 1500,
+      "total_combined_tokens": 31500,
       "estimated_usd_saved": 0.0
     }
   },
@@ -27,7 +27,7 @@
       "title": "Registry Generator",
       "status": "In Review",
       "created_at": "2026-05-06T18:45:00Z",
-      "updated_at": "2026-05-08T00:05:00Z",
+      "updated_at": "2026-05-08T00:10:00Z",
       "assigned_to": "gemini-cli",
       "phase": "validation",
       "complexity": "Medium",

@@ -1,14 +1,14 @@
 {
   "project_total_cost": {
-    "prompt": 1505733,
-    "reasoning": 341028,
-    "output": 89554,
-    "total": 1936315
+    "prompt": 1525733,
+    "reasoning": 342028,
+    "output": 90054,
+    "total": 1957815
   },
   "quota_governance": {
     "daily_limit": 500000,
-    "used_24h": 1285451,
-    "used_percentage": "257.1%",
+    "used_24h": 1306951,
+    "used_percentage": "261.4%",
     "remaining": 0,
     "remaining_percentage": "0.0%",
     "hours_to_reset": "0h 05m",
@@ -16,6 +16,20 @@
     "next_reset_at": "2026-05-08T00:00:00+00:00"
   },
   "logs": [
+    {
+      "timestamp": "2026-05-07T23:55:01Z",
+      "context": "SESSION-INIT",
+      "phase": "foundations",
+      "slice_id": "Foundational",
+      "status": "success",
+      "prompt_source": "MANUAL: hi",
+      "tokens": {
+        "prompt": 20000,
+        "reasoning": 1000,
+        "output": 500,
+        "total": 21500
+      }
+    },
     {
       "timestamp": "2026-05-07T23:55:00Z",
       "context": "BKP-004-IMPLEMENTATION-RESTART",
