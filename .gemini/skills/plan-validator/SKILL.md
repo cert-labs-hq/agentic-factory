@@ -19,11 +19,11 @@ You MUST CREATE two files for every planning phase:
 
 #### 2.1 Planning Markdown (`[ID]-PLAN.md`)
 The file must have the following structure:
-...
-#### 🛡️ Execution Steps (Atomic & Deterministic)
-...
-#### 💰 FinOps Forecast (Rating)
-...
+- **Title**: Implementation Plan for [ID]
+- **Summary**: High-level approach.
+- **Architectural Constraints**: Derived from Master Spec.
+- **🛡️ Execution Steps (Atomic & Deterministic)**: Step-by-step TDD sequence.
+- **💰 FinOps Forecast (Rating)**: Estimated token impact.
 
 #### 🐍 Mandatory Architectural Stubs (in `src/[ID]/`)
 You MUST generate Python class definitions that serve as the interface for the implementation.
@@ -36,7 +36,7 @@ You MUST generate Python class definitions that serve as the interface for the i
     - **Implementor Workflow**: Note in the plan that the implementor will be responsible for moving these interfaces to their final locations within `src/` during the Implementation phase.
 
 ### 3. Metadata Sync
-* **Completion Transition**: Update the Slice metadata JSON to Status: `Planned` and Phase: `planning`.
+* **Completion Transition**: Update the Slice metadata JSON to **Status: `Planned`** and **Phase: `planning`**.
 * **Forecast Injection**: Update the `forecast` object in `.factory/slices/[ID].json` with the new metrics.
 * **Timestamp**: Update the `updated_at` field.
 
