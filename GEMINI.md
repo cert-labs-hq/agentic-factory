@@ -10,7 +10,7 @@ An automated dashboard to visualize AI code generation plans, "slices," and toke
 3. **Spec-Driven Development:** Follow a "slice-based" approach across five phases: Foundations, Specs, Planning, Implementation, and Validation. The Planning phase MUST include the design of Python classes (interfaces/stubs) ready for testing to ensure architectural alignment. Before writing code, briefly outline the implementation plan in a JSON-compatible format.
 4. **Tooling:** Assume the use of Gemini 2.0/3.0 models via CLI and GitHub for version control.
 5. **Schema Compliance:** Every slice implementation MUST adhere to the JSON schema defined in `.factory/contracts/schema_file.json`.
-6. **Universal Logging:** EVERY turn MUST conclude with an update to `.factory/telemetry.json`. If the prompt is manual, use the format `MANUAL: [prompt_text]` in the `prompt_source` field.
+6. **Universal Logging (MANDATORY):** EVERY single interaction (User Prompt -> Agent Response) MUST conclude with a new entry in `.factory/telemetry.json`. This is non-negotiable and applies to all prompts, whether derived from Markdown files or manual CLI input. In the case of manual input, use the format `MANUAL: [prompt_text]` in the `prompt_source` field. Each entry must capture the exact token usage of that specific turn.
 
 ## Tech Stack
 - **Frontend:** TypeScript / React (Tailwind for styling)
