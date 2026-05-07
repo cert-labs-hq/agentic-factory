@@ -19,6 +19,7 @@ class TestRegistryAggregator(unittest.TestCase):
         # Create valid dummy slices
         self.create_slice("ABC-001.json", {"id": "ABC-001", "status": "Planned", "total_tokens": 1000})
         self.create_slice("XYZ-123.json", {"id": "XYZ-123", "status": "Warehoused", "total_tokens": 5000})
+        self.create_slice("PRO-001.json", {"id": "PRO-001", "status": "Proposed", "total_tokens": 0})
         # Create invalid filename
         self.create_slice("not-a-slice.json", {"id": "BAD", "status": "Planned"})
         
@@ -44,21 +45,23 @@ class TestRegistryAggregator(unittest.TestCase):
             json.dump(full_data, f)
 
     def test_discover_slices(self):
-        # Should only find ABC-001 and XYZ-123
+        # Should find ABC-001, XYZ-123, and PRO-001
         slices = self.aggregator.discover_slices()
-        self.assertEqual(len(slices), 2)
+        self.assertEqual(len(slices), 3)
         filenames = [s.name for s in slices]
         self.assertIn("ABC-001.json", filenames)
         self.assertIn("XYZ-123.json", filenames)
+        self.assertIn("PRO-001.json", filenames)
         self.assertNotIn("not-a-slice.json", filenames)
 
     def test_aggregate_metrics(self):
         registry = self.aggregator.aggregate()
         metadata = registry.get("metadata", {})
-        self.assertEqual(metadata.get("total_slices"), 2)
+        self.assertEqual(metadata.get("total_slices"), 3)
         status_summary = metadata.get("status_summary", {})
         self.assertEqual(status_summary.get("Planned"), 1)
         self.assertEqual(status_summary.get("Warehoused"), 1)
+        self.assertEqual(status_summary.get("Proposed"), 1)
 
 if __name__ == '__main__':
     unittest.main()

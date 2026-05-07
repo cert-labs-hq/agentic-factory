@@ -1,5 +1,6 @@
 import json
 import argparse
+import re
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 from datetime import datetime
@@ -36,8 +37,6 @@ class SliceValidator:
         # For MVP, checking existence of required fields is sufficient
         return True
 
-import re
-
 class RegistryAggregator:
     """
     Scans the slices directory and aggregates metadata into a unified registry structure.
@@ -65,7 +64,7 @@ class RegistryAggregator:
         discovered = self.discover_slices()
         slices_data = []
         status_counts = {
-            "Planned": 0, "Quota-Blocked": 0, "In Progress": 0, 
+            "Proposed": 0, "Planned": 0, "Quota-Blocked": 0, "In Progress": 0, 
             "In Review": 0, "Approved": 0, "Warehoused": 0, "Rejected": 0
         }
         total_tokens = 0
@@ -155,6 +154,7 @@ def main():
     agg_schema_path = Path(args.aggregate_schema)
 
     try:
+        print(f"--- Starting Registry Generation ---")
         validator = SliceValidator(schema_path)
         aggregator = RegistryAggregator(slices_dir, validator)
         writer = RegistryWriter(output_path, agg_schema_path)
@@ -163,6 +163,7 @@ def main():
         writer.write(registry_data)
         
         print(f"Success: Aggregated {registry_data['metadata']['total_slices']} slices into {output_path}")
+        print(f"--- Registry Generation Complete ---")
     except Exception as e:
         print(f"Error during registry generation: {e}")
         exit(1)
