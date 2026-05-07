@@ -1,11 +1,25 @@
 {
   "project_total_cost": {
-    "prompt": 540500,
-    "reasoning": 134100,
-    "output": 56850,
-    "total": 731450
+    "prompt": 580500,
+    "reasoning": 144100,
+    "output": 60850,
+    "total": 785450
   },
   "logs": [
+    {
+      "timestamp": "2026-05-06T18:50:00Z",
+      "context": "BKP-004-SPEC",
+      "phase": "specs",
+      "slice_id": "BKP-004",
+      "status": "success",
+      "prompt_source": "prompts/specs/04_20260506_BKP-004_spec.md",
+      "tokens": {
+        "prompt": 40000,
+        "reasoning": 10000,
+        "output": 4000,
+        "total": 54000
+      }
+    },
     {
       "timestamp": "2026-05-04T13:30:00Z",
       "context": "setup_repo_structure",
