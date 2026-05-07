@@ -15,9 +15,9 @@ Provide a deterministic mechanism to aggregate distributed slice metadata into a
 
 ### 3.1 Aggregation Logic
 1.  **Discovery:** Scan the `.factory/slices/` directory for all `.json` files.
-2.  **Exclusion:** Ignore `schema_file.json` and any non-slice JSON files.
+2.  **Exclusion:** Ignore `schema_file.json` and any non-slice JSON files that matches the pattern [A-Z]{3}-[0-9]{3}*.json (e.g., BKP-001.json).
 3.  **Validation:** 
-    - Each slice file MUST be validated against the master schema using a library like `jsonschema`.
+    - Each slice file MUST be validated against the master schema using standard python libraries.
     - If a file fails validation, the generator must log an error and skip the file (or fail the build depending on configuration).
 4.  **Transformation:**
     - Extract all fields from individual slices.
@@ -44,10 +44,12 @@ The `index.json` must follow this structure:
       "Rejected": 0
     },
     "global_finops": {
-      "total_prompt_tokens": 0,
-      "total_reasoning_tokens": 0,
-      "total_output_tokens": 0,
-      "total_combined_tokens": 0
+      "total_prompt_tokens": 223226,
+      "total_reasoning_tokens": 47434,
+      "total_cache_read_tokens": 1156963, 
+      "total_output_tokens": 5645,
+      "total_combined_tokens": 1433268,
+      "estimated_usd_saved": 0.85
     }
   },
   "slices": [
