@@ -58,7 +58,7 @@ The day-to-day execution of the factory floor is governed by the **Factory Proto
 The lifecycle of a product implementation is divided into four distinct phases (excluding Foundations), each represented by a dedicated directory in `prompts/`:
 
 1.  **Specs:** Detailed technical specifications for individual features or components.
-2.  **Planning:** Strategic breakdown of specs into actionable slices. This phase MUST produce testable Python class designs (interfaces or stubs) to ensure architectural integrity before the Implementation phase.
+2.  **Planning:** Strategic breakdown of specs into actionable slices. This phase MUST produce testable Python class designs (interfaces or stubs) in `src/[ID]/interfaces.py` to ensure architectural integrity before the Implementation phase. These stubs serve as the blueprint for the implementor.
 3.  **Implementation:** Active code generation and development turns.
 4.  **Validation:** Testing, QA, and verification of implemented slices against the original specs.
 

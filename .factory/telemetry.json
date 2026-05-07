@@ -1,21 +1,49 @@
 {
   "project_total_cost": {
-    "prompt": 1055733,
-    "reasoning": 251028,
-    "output": 77554,
-    "total": 1384315
+    "prompt": 1205733,
+    "reasoning": 281028,
+    "output": 81554,
+    "total": 1568315
   },
   "quota_governance": {
     "daily_limit": 500000,
-    "used_24h": 818451,
-    "used_percentage": "163.7%",
+    "used_24h": 985451,
+    "used_percentage": "197.1%",
     "remaining": 0,
     "remaining_percentage": "0.0%",
-    "hours_to_reset": "4h 0m",
-    "last_updated_at": "2026-05-06T20:00:00.000000+00:00",
-    "next_reset_at": "2026-05-07T00:00:00+00:00"
+    "hours_to_reset": "2h 0m",
+    "last_updated_at": "2026-05-07T22:00:00.000000+00:00",
+    "next_reset_at": "2026-05-08T00:00:00+00:00"
   },
   "logs": [
+    {
+      "timestamp": "2026-05-07T22:00:00Z",
+      "context": "BKP-004-SPEC-CLASSES",
+      "phase": "specs",
+      "slice_id": "BKP-004",
+      "status": "success",
+      "prompt_source": "prompts/specs/05_20260507_BKP-004_spec_classes.md",
+      "tokens": {
+        "prompt": 75000,
+        "reasoning": 15000,
+        "output": 2000,
+        "total": 92000
+      }
+    },
+    {
+      "timestamp": "2026-05-07T21:30:00Z",
+      "context": "PLANNER-SKILL-ENHANCEMENT",
+      "phase": "foundations",
+      "slice_id": "Foundational",
+      "status": "success",
+      "prompt_source": "prompts/foundations/11_20260507_improve_planner_skill.md",
+      "tokens": {
+        "prompt": 75000,
+        "reasoning": 15000,
+        "output": 2000,
+        "total": 92000
+      }
+    },
     {
       "timestamp": "2026-05-07T03:23:50Z",
       "context": "PLAN-VALIDATOR-ENHANCEMENT",

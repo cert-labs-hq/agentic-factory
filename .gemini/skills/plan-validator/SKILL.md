@@ -11,23 +11,27 @@ When triggered, you MUST NOT generate implementation code. Your goal is to produ
 * **Halt-on-Ambiguity**: If requirements are missing, trigger the DRV-FAILURE protocol instead of planning.
 
 ### 2. Implementation Plan Artifact
-You MUST CREATE a new Markdown file named `.factory/slices/[ID]-PLAN.md` with the following structure. Do not just provide a markdown block; physically write the file to the repository.
+You MUST CREATE two files for every planning phase:
+1. A new Markdown file named `.factory/slices/[ID]-PLAN.md`.
+2. A Python interface file in a new slice-specific directory: `src/[ID]/interfaces.py`.
 
-#### 🎯 Architectural Alignment
-* **Target Spec**: Reference the source Markdown in `docs/specs/`.
-* **Scope**: List exactly which files will be created or modified.
-
+#### 2.1 Planning Markdown (`[ID]-PLAN.md`)
+The file must have the following structure:
+...
 #### 🛡️ Execution Steps (Atomic & Deterministic)
-1.  **Step [N] [Task Name]**: 
-    * **Description**: Detailed instruction of what to build.
-    * **Definition of Done (DoD)**: The verifiable outcome.
-    * **Validation**: The command or check to run (e.g., `python -m pytest`).
-
+...
 #### 💰 FinOps Forecast (Rating)
-* **Complexity**: [Low | Medium | High]
-* **Forecasted Input**: (Estimated tokens for full context read)
-* **Forecasted Reasoning**: (Estimated tokens for logic/validation)
-* **Cache Strategy**: Describe how to maximize cache hits (e.g., "Keep Master Contract in context").
+...
+
+#### 🐍 Mandatory Architectural Stubs (in `src/[ID]/`)
+You MUST generate Python class definitions that serve as the interface for the implementation.
+- **Location**: These files MUST reside in `src/[ID]/interfaces.py`. This ensures a clean, isolated blueprint for the implementor.
+- **Requirements**:
+    - Use **Type Hints** for all parameters and return values.
+    - Include **Docstrings** explaining the purpose of each class and method.
+    - Use `pass` for method implementations.
+    - **Contract Alignment**: Ensure classes and methods directly reflect the structures defined in `.factory/contracts/` schemas.
+    - **Implementor Workflow**: Note in the plan that the implementor will be responsible for moving these interfaces to their final locations within `src/` during the Implementation phase.
 
 ### 3. Metadata Sync
 * **Status Update**: Update the Slice status to `Planned` in the metadata JSON.
