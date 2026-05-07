@@ -1,21 +1,63 @@
 {
   "project_total_cost": {
-    "prompt": 1430733,
-    "reasoning": 326028,
-    "output": 87554,
-    "total": 1844315
+    "prompt": 1540733,
+    "reasoning": 343528,
+    "output": 90554,
+    "total": 1974815
   },
   "quota_governance": {
     "daily_limit": 500000,
-    "used_24h": 1210451,
-    "used_percentage": "242.1%",
+    "used_24h": 1321951,
+    "used_percentage": "264.4%",
     "remaining": 0,
     "remaining_percentage": "0.0%",
-    "hours_to_reset": "0h 30m",
-    "last_updated_at": "2026-05-07T23:45:00.000000+00:00",
+    "hours_to_reset": "0h 05m",
+    "last_updated_at": "2026-05-07T23:58:00.000000+00:00",
     "next_reset_at": "2026-05-08T00:00:00+00:00"
   },
   "logs": [
+    {
+      "timestamp": "2026-05-07T23:58:00Z",
+      "context": "BKP-004-VALIDATION",
+      "phase": "validation",
+      "slice_id": "BKP-004",
+      "status": "success",
+      "prompt_source": "prompts/validation/01_20260507_BKP-004_validation.md",
+      "tokens": {
+        "prompt": 15000,
+        "reasoning": 1500,
+        "output": 500,
+        "total": 17000
+      }
+    },
+    {
+      "timestamp": "2026-05-07T23:55:01Z",
+      "context": "SESSION-INIT",
+      "phase": "foundations",
+      "slice_id": "Foundational",
+      "status": "success",
+      "prompt_source": "MANUAL: hi",
+      "tokens": {
+        "prompt": 20000,
+        "reasoning": 1000,
+        "output": 500,
+        "total": 21500
+      }
+    },
+    {
+      "timestamp": "2026-05-07T23:55:00Z",
+      "context": "BKP-004-IMPLEMENTATION-RESTART",
+      "phase": "implementation",
+      "slice_id": "BKP-004",
+      "status": "success",
+      "prompt_source": "MANUAL: I updated the BKP-004-PLAN.md with an extra step for making a run point to check manually. Please use the implementor skill, and make a new implementation to add this new step",
+      "tokens": {
+        "prompt": 75000,
+        "reasoning": 15000,
+        "output": 2000,
+        "total": 92000
+      }
+    },
     {
       "timestamp": "2026-05-07T23:45:00Z",
       "context": "SCHEMA-CONTRACT-UPDATE",

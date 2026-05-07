@@ -1,22 +1,23 @@
 {
   "metadata": {
-    "generated_at": "2026-05-07T13:55:49.178279Z",
+    "generated_at": "2026-05-07T20:54:33.204459Z",
     "total_slices": 1,
     "status_summary": {
-      "Planned": 1,
+      "Proposed": 0,
+      "Planned": 0,
       "Quota-Blocked": 0,
       "In Progress": 0,
       "In Review": 0,
-      "Approved": 0,
+      "Approved": 1,
       "Warehoused": 0,
       "Rejected": 0
     },
     "global_finops": {
-      "total_combined_tokens": 31500,
-      "total_prompt_tokens": 0,
-      "total_reasoning_tokens": 0,
+      "total_prompt_tokens": 25000,
+      "total_reasoning_tokens": 5000,
       "total_cache_read_tokens": 0,
-      "total_output_tokens": 0,
+      "total_output_tokens": 1500,
+      "total_combined_tokens": 31500,
       "estimated_usd_saved": 0.0
     }
   },
@@ -24,11 +25,11 @@
     {
       "id": "BKP-004",
       "title": "Registry Generator",
-      "status": "Planned",
+      "status": "Approved",
       "created_at": "2026-05-06T18:45:00Z",
-      "updated_at": "2026-05-06T18:45:00Z",
+      "updated_at": "2026-05-07T23:58:00Z",
       "assigned_to": "gemini-cli",
-      "phase": "planning",
+      "phase": "validation",
       "complexity": "Medium",
       "forecast": {
         "complexity": "Medium",
