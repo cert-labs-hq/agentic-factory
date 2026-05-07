@@ -10,8 +10,8 @@ When triggered, you MUST NOT generate implementation code. Your goal is to produ
 * **Contract Check**: Identify which files in `.factory/contracts/` must be enforced.
 * **Halt-on-Ambiguity**: If requirements are missing, trigger the DRV-FAILURE protocol instead of planning.
 
-### 2. Implementation Plan Template
-Generate a Markdown block for a new file named `.factory/slices/[ID]-PLAN.md` with the following structure:
+### 2. Implementation Plan Artifact
+You MUST CREATE a new Markdown file named `.factory/slices/[ID]-PLAN.md` with the following structure. Do not just provide a markdown block; physically write the file to the repository.
 
 #### 🎯 Architectural Alignment
 * **Target Spec**: Reference the source Markdown in `docs/specs/`.
@@ -30,7 +30,7 @@ Generate a Markdown block for a new file named `.factory/slices/[ID]-PLAN.md` wi
 * **Cache Strategy**: Describe how to maximize cache hits (e.g., "Keep Master Contract in context").
 
 ### 3. Metadata Sync
-* **Status Update**: Instruct the user to move the Slice status to `Planned` in the metadata JSON.
-* **Forecast Injection**: Provide the `forecast` JSON block to be added to `.factory/slices/[ID].json`.
+* **Status Update**: Update the Slice status to `Planned` in the metadata JSON.
+* **Forecast Injection**: Update the `forecast` object in `.factory/slices/[ID].json` with the new metrics.
 
-**TERMINAL INSTRUCTION**: "Plan generated for [ID]. Save this to `.factory/slices/[ID]-PLAN.md`? Once saved, I am ready to implement the first step."
+**TERMINAL INSTRUCTION**: "Plan file and metadata updated for [ID]. Ready to proceed with implementation upon request."
