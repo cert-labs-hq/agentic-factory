@@ -1,0 +1,46 @@
+{
+  "metadata": {
+    "generated_at": "2026-05-07T13:55:49.178279Z",
+    "total_slices": 1,
+    "status_summary": {
+      "Planned": 1,
+      "Quota-Blocked": 0,
+      "In Progress": 0,
+      "In Review": 0,
+      "Approved": 0,
+      "Warehoused": 0,
+      "Rejected": 0
+    },
+    "global_finops": {
+      "total_combined_tokens": 31500,
+      "total_prompt_tokens": 0,
+      "total_reasoning_tokens": 0,
+      "total_cache_read_tokens": 0,
+      "total_output_tokens": 0,
+      "estimated_usd_saved": 0.0
+    }
+  },
+  "slices": [
+    {
+      "id": "BKP-004",
+      "title": "Registry Generator",
+      "status": "Planned",
+      "created_at": "2026-05-06T18:45:00Z",
+      "updated_at": "2026-05-06T18:45:00Z",
+      "assigned_to": "gemini-cli",
+      "phase": "planning",
+      "complexity": "Medium",
+      "forecast": {
+        "complexity": "Medium",
+        "estimated_tokens": {
+          "prompt": 25000,
+          "reasoning": 5000,
+          "output": 1500
+        }
+      },
+      "spec_path": "docs/specs/product/004-registry-generator.md",
+      "dependencies": [],
+      "metadata_version": "1.0"
+    }
+  ]
+}
