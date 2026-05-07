@@ -7,6 +7,8 @@ When triggered, you MUST NOT generate implementation code. Your goal is to produ
 
 ### 1. Verification Phase
 * **Identity Check**: Confirm the target **Slice ID** (e.g., BKP-004).
+* **State Verification**: Verify that the slice is currently in Phase: `specs` and Status: `Planned`. If not, STOP and inform the user.
+* **Immediate Transition**: Update the slice metadata JSON (`.factory/slices/[ID].json`) to Status: `In Progress` and Phase: `planning` BEFORE starting the plan.
 * **Contract Check**: Identify which files in `.factory/contracts/` must be enforced.
 * **Halt-on-Ambiguity**: If requirements are missing, trigger the DRV-FAILURE protocol instead of planning.
 
@@ -34,7 +36,8 @@ You MUST generate Python class definitions that serve as the interface for the i
     - **Implementor Workflow**: Note in the plan that the implementor will be responsible for moving these interfaces to their final locations within `src/` during the Implementation phase.
 
 ### 3. Metadata Sync
-* **Status Update**: Update the Slice status to `Planned` in the metadata JSON.
+* **Completion Transition**: Update the Slice metadata JSON to Status: `Planned` and Phase: `planning`.
 * **Forecast Injection**: Update the `forecast` object in `.factory/slices/[ID].json` with the new metrics.
+* **Timestamp**: Update the `updated_at` field.
 
-**TERMINAL INSTRUCTION**: "Plan file and metadata updated for [ID]. Ready to proceed with implementation upon request."
+**TERMINAL INSTRUCTION**: "Plan file and metadata updated for [ID] (Status: Planned, Phase: planning). Ready to proceed with implementation upon request."

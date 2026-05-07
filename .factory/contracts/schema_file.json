@@ -14,7 +14,9 @@
     "status": {
       "type": "string",
       "enum": [
+        "Proposed",
         "Planned",
+        "Quota-Blocked",
         "In Progress",
         "In Review",
         "Approved",
@@ -89,7 +91,8 @@
     },
     "metadata_version": {
       "type": "string",
-      "description": "Version of the metadata schema used"
+      "description": "Version of the metadata schema used",
+      "default": "1.1.0"
     }
   },
   "required": [

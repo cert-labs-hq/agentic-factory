@@ -20,14 +20,19 @@ The project is divided into discrete units of work called **Slices**.
 *   The metadata schema tracks the state and implementation history. Token usage is tracked exclusively via the central telemetry system, governed by `.factory/contracts/telemetry_schema.json`.
 
 ## 4. State Machine (The Factory Floor)
-Agents and humans must strictly adhere to the following states:
+Agents and humans must strictly adhere to the following states and their corresponding phases (See `docs/specs/foundations/002-slice-state-machine.md` for details):
 
-1.  **Planned:** The slice input/specification is defined and ready for implementation.
-2.  **In Progress:** An Agent is actively generating the code for the slice.
-3.  **In Review:** Code generation is complete; a Pull Request is open for human validation.
-4.  **Approved:** The reviewer has validated the implementation. This state triggers the automated "Outbound" action.
-5.  **Warehoused:** The slice is integrated into the main branch with a proper artifact, git tag, and release.
-6.  **Rejected:** The implementation failed validation and is returned for re-planning or correction.
+1.  **Proposed** (Phase: `specs`): Initial idea or requirement.
+2.  **Planned** (Phase: `specs` | `planning`): 
+    *   If Phase is `specs`: Spec is complete, ready for Planning.
+    *   If Phase is `planning`: Plan/Blueprints are complete, ready for Implementation.
+3.  **In Progress** (Phase: `planning` | `implementation`): Work is active.
+4.  **In Review** (Phase: `implementation` | `validation`): 
+    *   If Phase is `implementation`: Code is complete, ready for Review.
+    *   If Phase is `validation`: Review is in progress.
+5.  **Approved** (Phase: `validation`): Validated and ready for warehousing.
+6.  **Warehoused**: Integrated into the main branch.
+7.  **Rejected**: Returned for re-planning or correction.
 
 ## 5. Definition of Done (Warehousing)
 A slice is only considered "Warehoused" when:
@@ -55,12 +60,19 @@ The day-to-day execution of the factory floor is governed by the **Factory Proto
 * All specs and prompts must be secure againt Input Integrity.
 
 ## 9. Spec-Driven Development Phases
-The lifecycle of a product implementation is divided into four distinct phases (excluding Foundations), each represented by a dedicated directory in `prompts/`:
+The lifecycle of a product implementation is divided into four distinct phases, each with strict entrance/exit criteria:
 
 1.  **Specs:** Detailed technical specifications for individual features or components.
+    *   *Exit Status*: `Planned` (Phase: `specs`).
 2.  **Planning:** Strategic breakdown of specs into actionable slices. This phase MUST produce testable Python class designs (interfaces or stubs) in `src/[ID]/interfaces.py` to ensure architectural integrity before the Implementation phase. These stubs serve as the blueprint for the implementor.
-3.  **Implementation:** Active code generation and development turns.
+    *   *Entrance Status*: `Planned` (Phase: `specs`).
+    *   *Exit Status*: `Planned` (Phase: `planning`).
+3.  **Implementation:** Active code generation and development turns following TDD. Always performed in a feature branch.
+    *   *Entrance Status*: `Planned` (Phase: `planning`).
+    *   *Exit Status*: `In Review` (Phase: `implementation`).
 4.  **Validation:** Testing, QA, and verification of implemented slices against the original specs.
+    *   *Entrance Status*: `In Review` (Phase: `validation`).
+    *   *Exit Status*: `Approved`.
 
 # 📑 Factory Protocol: Standard Operating Procedure (SOP)
 
