@@ -1,126 +1,70 @@
 {
   "total_cost": {
-    "prompt_tokens": 540500,
-    "reasoning_tokens": 134100,
-    "output_tokens": 56850,
-    "total_tokens": 731450
+    "prompt_tokens": 1545733,
+    "reasoning_tokens": 344528,
+    "output_tokens": 91554,
+    "total_tokens": 1981815
   },
   "phases": {
+    "planning": {
+      "prompt_tokens": 71580,
+      "reasoning_tokens": 12776,
+      "output_tokens": 2534,
+      "total_tokens": 86890,
+      "count": 2
+    },
+    "validation": {
+      "prompt_tokens": 15000,
+      "reasoning_tokens": 1500,
+      "output_tokens": 500,
+      "total_tokens": 17000,
+      "count": 1
+    },
     "foundations": {
-      "prompt_tokens": 537500,
-      "reasoning_tokens": 133100,
-      "output_tokens": 55350,
-      "total_tokens": 725950,
-      "count": 22
+      "prompt_tokens": 1187897,
+      "reasoning_tokens": 272860,
+      "output_tokens": 79486,
+      "total_tokens": 1540243,
+      "count": 33
+    },
+    "implementation": {
+      "prompt_tokens": 225000,
+      "reasoning_tokens": 45000,
+      "output_tokens": 6000,
+      "total_tokens": 276000,
+      "count": 3
     },
     "specs": {
-      "prompt_tokens": 3000,
-      "reasoning_tokens": 1000,
-      "output_tokens": 1500,
-      "total_tokens": 5500,
-      "count": 1
+      "prompt_tokens": 121256,
+      "reasoning_tokens": 27392,
+      "output_tokens": 5034,
+      "total_tokens": 153682,
+      "count": 3
     }
   },
   "slices": {
-    "Foundational": {
-      "prompt_tokens": 146420,
-      "reasoning_tokens": 40728,
-      "output_tokens": 16045,
-      "total_tokens": 203193,
-      "count": 7
-    },
-    "FACTORY-ALIGN-001": {
-      "prompt_tokens": 6500,
-      "reasoning_tokens": 1500,
-      "output_tokens": 600,
-      "total_tokens": 8600,
-      "count": 1
-    },
-    "FACTORY-SYNC-PROT-003": {
-      "prompt_tokens": 11200,
-      "reasoning_tokens": 1200,
-      "output_tokens": 450,
-      "total_tokens": 12850,
-      "count": 1
-    },
-    "FACTORY-ALIGN-002": {
-      "prompt_tokens": 14380,
-      "reasoning_tokens": 2372,
-      "output_tokens": 1855,
-      "total_tokens": 18607,
-      "count": 1
-    },
-    "FACTORY-TELEMETRY-SUMMARY-003": {
-      "prompt_tokens": 15000,
-      "reasoning_tokens": 2000,
-      "output_tokens": 1000,
-      "total_tokens": 18000,
-      "count": 1
-    },
-    "FACTORY-ALIGN-004": {
-      "prompt_tokens": 16000,
-      "reasoning_tokens": 2500,
-      "output_tokens": 1200,
-      "total_tokens": 19700,
-      "count": 1
-    },
-    "FACTORY-QA-ENHANCE-005": {
-      "prompt_tokens": 21000,
-      "reasoning_tokens": 2000,
-      "output_tokens": 1200,
-      "total_tokens": 24200,
-      "count": 1
-    },
-    "FACTORY-PROMPT-REF-006": {
-      "prompt_tokens": 22000,
-      "reasoning_tokens": 1800,
-      "output_tokens": 1000,
-      "total_tokens": 24800,
-      "count": 1
-    },
-    "FACTORY-SLICE-OVERVIEW-001": {
-      "prompt_tokens": 3000,
+    "FRT-001": {
+      "prompt_tokens": 5000,
       "reasoning_tokens": 1000,
-      "output_tokens": 1500,
-      "total_tokens": 5500,
+      "output_tokens": 1000,
+      "total_tokens": 7000,
       "count": 1
     },
-    "FACTORY-SLICE-ALIGN-007": {
-      "prompt_tokens": 25000,
-      "reasoning_tokens": 4000,
-      "output_tokens": 2000,
-      "total_tokens": 31000,
-      "count": 1
+    "BKP-004": {
+      "prompt_tokens": 349836,
+      "reasoning_tokens": 69668,
+      "output_tokens": 9568,
+      "total_tokens": 429072,
+      "count": 6
     },
-    "FACTORY-METADATA-DOC-008": {
-      "prompt_tokens": 25000,
-      "reasoning_tokens": 5000,
-      "output_tokens": 2500,
-      "total_tokens": 32500,
-      "count": 1
+    "Foundational": {
+      "prompt_tokens": 871817,
+      "reasoning_tokens": 195488,
+      "output_tokens": 42181,
+      "total_tokens": 1109486,
+      "count": 19
     },
-    "FACTORY-METADATA-ALIGN-009": {
-      "prompt_tokens": 25000,
-      "reasoning_tokens": 6000,
-      "output_tokens": 3000,
-      "total_tokens": 34000,
-      "count": 1
-    },
-    "FACTORY-SKILL-ALIGN-010": {
-      "prompt_tokens": 30000,
-      "reasoning_tokens": 7000,
-      "output_tokens": 3500,
-      "total_tokens": 40500,
-      "count": 1
-    },
-    "FACTORY-NEW-TELEMETRY-INFO-007": {
-      "prompt_tokens": 45000,
-      "reasoning_tokens": 12000,
-      "output_tokens": 6000,
-      "total_tokens": 63000,
-      "count": 1
-    },
-    "FACTORY-QUOTA-STATE-008": {
+    "FACTORY-QUOTA-TRANSPARENCY-010": {
       "prompt_tokens": 45000,
       "reasoning_tokens": 15000,
       "output_tokens": 5000,
@@ -134,22 +78,113 @@
       "total_tokens": 65000,
       "count": 1
     },
-    "FACTORY-QUOTA-TRANSPARENCY-010": {
+    "FACTORY-QUOTA-STATE-008": {
       "prompt_tokens": 45000,
       "reasoning_tokens": 15000,
       "output_tokens": 5000,
       "total_tokens": 65000,
       "count": 1
+    },
+    "FACTORY-NEW-TELEMETRY-INFO-007": {
+      "prompt_tokens": 45000,
+      "reasoning_tokens": 12000,
+      "output_tokens": 6000,
+      "total_tokens": 63000,
+      "count": 1
+    },
+    "FACTORY-SKILL-ALIGN-010": {
+      "prompt_tokens": 30000,
+      "reasoning_tokens": 7000,
+      "output_tokens": 3500,
+      "total_tokens": 40500,
+      "count": 1
+    },
+    "FACTORY-METADATA-ALIGN-009": {
+      "prompt_tokens": 25000,
+      "reasoning_tokens": 6000,
+      "output_tokens": 3000,
+      "total_tokens": 34000,
+      "count": 1
+    },
+    "FACTORY-METADATA-DOC-008": {
+      "prompt_tokens": 25000,
+      "reasoning_tokens": 5000,
+      "output_tokens": 2500,
+      "total_tokens": 32500,
+      "count": 1
+    },
+    "FACTORY-SLICE-ALIGN-007": {
+      "prompt_tokens": 25000,
+      "reasoning_tokens": 4000,
+      "output_tokens": 2000,
+      "total_tokens": 31000,
+      "count": 1
+    },
+    "FACTORY-SLICE-OVERVIEW-001": {
+      "prompt_tokens": 3000,
+      "reasoning_tokens": 1000,
+      "output_tokens": 1500,
+      "total_tokens": 5500,
+      "count": 1
+    },
+    "FACTORY-PROMPT-REF-006": {
+      "prompt_tokens": 22000,
+      "reasoning_tokens": 1800,
+      "output_tokens": 1000,
+      "total_tokens": 24800,
+      "count": 1
+    },
+    "FACTORY-QA-ENHANCE-005": {
+      "prompt_tokens": 21000,
+      "reasoning_tokens": 2000,
+      "output_tokens": 1200,
+      "total_tokens": 24200,
+      "count": 1
+    },
+    "FACTORY-ALIGN-004": {
+      "prompt_tokens": 16000,
+      "reasoning_tokens": 2500,
+      "output_tokens": 1200,
+      "total_tokens": 19700,
+      "count": 1
+    },
+    "FACTORY-TELEMETRY-SUMMARY-003": {
+      "prompt_tokens": 15000,
+      "reasoning_tokens": 2000,
+      "output_tokens": 1000,
+      "total_tokens": 18000,
+      "count": 1
+    },
+    "FACTORY-ALIGN-002": {
+      "prompt_tokens": 14380,
+      "reasoning_tokens": 2372,
+      "output_tokens": 1855,
+      "total_tokens": 18607,
+      "count": 1
+    },
+    "FACTORY-SYNC-PROT-003": {
+      "prompt_tokens": 11200,
+      "reasoning_tokens": 1200,
+      "output_tokens": 450,
+      "total_tokens": 12850,
+      "count": 1
+    },
+    "FACTORY-ALIGN-001": {
+      "prompt_tokens": 6500,
+      "reasoning_tokens": 1500,
+      "output_tokens": 600,
+      "total_tokens": 8600,
+      "count": 1
     }
   },
   "quota_governance": {
     "daily_limit": 500000,
-    "used_24h": 573000,
-    "used_percentage": "114.6%",
+    "used_24h": 935074,
+    "used_percentage": "187.0%",
     "remaining": 0,
     "remaining_percentage": "0.0%",
-    "hours_to_reset": "5h 44m",
-    "last_updated_at": "2026-05-06T18:15:05.168958+00:00",
-    "next_reset_at": "2026-05-07T00:00:00+00:00"
+    "hours_to_reset": "22h 52m",
+    "last_updated_at": "2026-05-08T01:07:17.269877+00:00",
+    "next_reset_at": "2026-05-09T00:00:00+00:00"
   }
 }
