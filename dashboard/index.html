@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Factory | FinOps Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+        body {
+            font-family: 'JetBrains+Mono', monospace;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            950: '#020617',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+    <!-- Navigation -->
+    <nav class="border-b border-slate-800 p-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
+                <h1 class="text-xl font-bold tracking-tight text-white">AI FACTORY <span class="text-emerald-500">OPERATIONS</span></h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span id="last-updated" class="text-xs text-slate-500">Last Sync: --:--:--</span>
+                <span class="bg-emerald-500/10 text-emerald-400 px-2 py-1 rounded text-[10px] border border-emerald-500/20">LIVE_METRICS</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto p-6 space-y-8">
+        <!-- KPI Ribbon -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-lg">
+                <p class="text-slate-500 text-xs uppercase tracking-widest mb-2">Total Slices</p>
+                <h2 id="count-slices" class="text-4xl font-bold text-white">0</h2>
+                <div class="mt-4 w-full bg-slate-800 h-1 rounded-full overflow-hidden">
+                    <div class="bg-blue-500 h-full w-2/3"></div>
+                </div>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-lg">
+                <p class="text-slate-500 text-xs uppercase tracking-widest mb-2">Token Investment</p>
+                <h2 id="count-tokens" class="text-4xl font-bold text-white">0</h2>
+                <p class="text-[10px] text-slate-400 mt-2">Combined P/R/O tokens</p>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-lg">
+                <p class="text-slate-500 text-xs uppercase tracking-widest mb-2">Estimated Savings</p>
+                <h2 id="count-savings" class="text-4xl font-bold text-emerald-400">$0.00</h2>
+                <p class="text-[10px] text-emerald-500/60 mt-2">FinOps Optimization (Cache)</p>
+            </div>
+        </div>
+
+        <!-- Registry Table -->
+        <div class="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden">
+            <div class="p-4 border-b border-slate-800 flex justify-between items-center">
+                <h3 class="text-sm font-bold uppercase tracking-wider">Module Registry</h3>
+                <div class="text-[10px] text-slate-500">Source: .factory/index.json</div>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead>
+                        <tr class="bg-slate-950 text-slate-400 text-xs uppercase tracking-wider">
+                            <th class="px-6 py-4 font-semibold">ID</th>
+                            <th class="px-6 py-4 font-semibold">Name</th>
+                            <th class="px-6 py-4 font-semibold text-center">Status</th>
+                            <th class="px-6 py-4 font-semibold text-right">Usage (Tokens)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="registry-table-body" class="divide-y divide-slate-800">
+                        <!-- Dynamic Rows -->
+                        <tr>
+                            <td colspan="4" class="px-6 py-12 text-center text-slate-500 italic">Initializing factory uplink...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer class="max-w-7xl mx-auto p-6 text-center text-[10px] text-slate-600 uppercase tracking-[0.2em] mt-12">
+        AIF-DASHBOARD v1.1.0 // CERT-LABS-HQ // ZERO-DEPENDENCY-BUILD
+    </footer>
+
+    <script>
+        const STATUS_CLASSES = {
+            'Approved': 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+            'In Progress': 'bg-amber-500/10 text-amber-400 border-amber-500/20',
+            'Planned': 'bg-slate-500/10 text-slate-400 border-slate-500/20',
+            'In Review': 'bg-blue-500/10 text-blue-400 border-blue-500/20',
+            'Quota-Blocked': 'bg-red-500/10 text-red-400 border-red-500/20'
+        };
+
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        function renderMetrics(metadata) {
+            document.getElementById('count-slices').textContent = metadata.total_slices;
+            document.getElementById('count-tokens').textContent = formatNumber(metadata.global_finops.total_combined_tokens);
+            document.getElementById('count-savings').textContent = `$${metadata.global_finops.estimated_usd_saved.toFixed(2)}`;
+            document.getElementById('last-updated').textContent = `Last Sync: ${new Date(metadata.generated_at).toLocaleTimeString()}`;
+        }
+
+        function renderTable(slices) {
+            const container = document.getElementById('registry-table-body');
+            if (!slices || slices.length === 0) {
+                container.innerHTML = `<tr><td colspan="4" class="px-6 py-12 text-center text-red-400">No slices detected in registry.</td></tr>`;
+                return;
+            }
+
+            container.innerHTML = slices.map(slice => {
+                const statusClass = STATUS_CLASSES[slice.status] || 'bg-slate-500/10 text-slate-400 border-slate-500/20';
+                const usage = slice.token_usage || slice.forecast?.estimated_tokens || {};
+                const totalTokens = (usage.prompt || 0) + (usage.reasoning || 0) + (usage.output || 0);
+
+                return `
+                    <tr class="hover:bg-slate-800/50 transition-colors">
+                        <td class="px-6 py-4 font-bold text-white text-xs">${slice.id}</td>
+                        <td class="px-6 py-4 text-slate-300">${slice.title}</td>
+                        <td class="px-6 py-4 text-center">
+                            <span class="px-2 py-0.5 rounded text-[10px] border ${statusClass}">
+                                ${slice.status.toUpperCase()}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 text-right text-xs font-mono text-slate-400">
+                            ${formatNumber(totalTokens)}
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        async function initDashboard() {
+            try {
+                const response = await fetch('../.factory/index.json');
+                if (!response.ok) throw new Error('Registry not found');
+                
+                const data = await response.json();
+                renderMetrics(data.metadata);
+                renderTable(data.slices);
+            } catch (error) {
+                console.error('Factory Error:', error);
+                document.getElementById('registry-table-body').innerHTML = `
+                    <tr>
+                        <td colspan="4" class="px-6 py-12 text-center">
+                            <div class="text-red-500 font-bold mb-2 uppercase text-xs tracking-widest">Uplink Failure</div>
+                            <div class="text-slate-500 text-[10px]">Registry index missing or corrupted. Run registry generator.</div>
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', initDashboard);
+    </script>
+</body>
+</html>
