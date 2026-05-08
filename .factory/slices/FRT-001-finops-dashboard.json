@@ -1,0 +1,21 @@
+{
+  "id": "FRT-001",
+  "title": "FinOps Dashboard",
+  "status": "Planned",
+  "created_at": "2026-05-07T23:59:00Z",
+  "updated_at": "2026-05-07T23:59:00Z",
+  "assigned_to": "gemini-cli",
+  "phase": "planning",
+  "complexity": "Medium",
+  "forecast": {
+    "complexity": "Medium",
+    "estimated_tokens": {
+      "prompt": 15000,
+      "reasoning": 3000,
+      "output": 1000
+    }
+  },
+  "spec_path": "docs/specs/product/005-initial-dashboaard.md",
+  "dependencies": ["BKP-004"],
+  "metadata_version": "1.1.0"
+}

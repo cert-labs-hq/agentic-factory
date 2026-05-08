@@ -1,21 +1,35 @@
 {
   "project_total_cost": {
-    "prompt": 1540733,
-    "reasoning": 343528,
-    "output": 90554,
-    "total": 1974815
+    "prompt": 1545733,
+    "reasoning": 344528,
+    "output": 91554,
+    "total": 1981815
   },
   "quota_governance": {
     "daily_limit": 500000,
-    "used_24h": 1321951,
-    "used_percentage": "264.4%",
+    "used_24h": 1328951,
+    "used_percentage": "265.8%",
     "remaining": 0,
     "remaining_percentage": "0.0%",
     "hours_to_reset": "0h 05m",
-    "last_updated_at": "2026-05-07T23:58:00.000000+00:00",
+    "last_updated_at": "2026-05-07T23:59:00.000000+00:00",
     "next_reset_at": "2026-05-08T00:00:00+00:00"
   },
   "logs": [
+    {
+      "timestamp": "2026-05-07T23:59:00Z",
+      "context": "FRT-001-PLANNING",
+      "phase": "planning",
+      "slice_id": "FRT-001",
+      "status": "success",
+      "prompt_source": "prompts/planning/02_20260507_FRT-001_plan.md",
+      "tokens": {
+        "prompt": 5000,
+        "reasoning": 1000,
+        "output": 1000,
+        "total": 7000
+      }
+    },
     {
       "timestamp": "2026-05-07T23:58:00Z",
       "context": "BKP-004-VALIDATION",
