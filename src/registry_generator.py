@@ -35,9 +35,10 @@ class RegistryAggregator:
     """
     Scans the slices directory and aggregates metadata into a unified registry structure.
     """
-    def __init__(self, slices_dir: Path, validator: SliceValidator):
+    def __init__(self, slices_dir: Path, validator: SliceValidator, telemetry_path: Path = Path(".factory/telemetry.json")):
         self.slices_dir = slices_dir
         self.validator = validator
+        self.telemetry_path = telemetry_path
         # Pattern to match slice JSON files like BKP-001-name.json
         self.slice_pattern = re.compile(r"^[A-Z]{3}-[0-9]{3}.*\.json$")
 
@@ -48,6 +49,47 @@ class RegistryAggregator:
         # Filter files that match the pattern and are NOT the index.json itself
         return [p for p in self.slices_dir.glob("*.json") 
                 if self.slice_pattern.match(p.name) and p.name != "index.json"]
+
+    def aggregate_telemetry(self) -> Dict[str, Any]:
+        """
+        Aggregates FinOps metrics from telemetry.json.
+        """
+        if not self.telemetry_path.exists():
+            return {
+                "project_total_cost": {"prompt": 0, "reasoning": 0, "output": 0, "total": 0},
+                "phase_stats": {}
+            }
+        
+        with open(self.telemetry_path, 'r') as f:
+            try:
+                data = json.load(f)
+            except json.JSONDecodeError:
+                return {
+                    "project_total_cost": {"prompt": 0, "reasoning": 0, "output": 0, "total": 0},
+                    "phase_stats": {}
+                }
+            
+        logs = data.get("logs", [])
+        # Extract total cost if available, otherwise default
+        project_total = data.get("project_total_cost", {"prompt": 0, "reasoning": 0, "output": 0, "total": 0})
+        
+        phase_stats = {}
+        for log in logs:
+            phase = log.get("phase", "unknown")
+            tokens = log.get("tokens", {})
+            
+            if phase not in phase_stats:
+                phase_stats[phase] = {"prompt": 0, "reasoning": 0, "output": 0, "total": 0}
+            
+            phase_stats[phase]["prompt"] += tokens.get("prompt", 0)
+            phase_stats[phase]["reasoning"] += tokens.get("reasoning", 0)
+            phase_stats[phase]["output"] += tokens.get("output", 0)
+            phase_stats[phase]["total"] += tokens.get("total", 0)
+            
+        return {
+            "project_total_cost": project_total,
+            "phase_stats": phase_stats
+        }
 
     def aggregate(self) -> Dict[str, Any]:
         discovered = self.discover_slices()
@@ -78,6 +120,9 @@ class RegistryAggregator:
         # Based on $0.15 per 1M tokens standard rate.
         rate_per_token = 0.00000015
         usd_saved = (totals["cache"] * 0.90) * rate_per_token
+        
+        # Telemetry aggregation
+        telemetry_metrics = self.aggregate_telemetry()
 
         return {
             "metadata": {
@@ -90,7 +135,9 @@ class RegistryAggregator:
                     "total_cache_read_tokens": totals["cache"],
                     "total_output_tokens": totals["output"],
                     "total_combined_tokens": sum(totals.values()),
-                    "estimated_usd_saved": round(usd_saved, 6)
+                    "estimated_usd_saved": round(usd_saved, 6),
+                    "project_total_cost": telemetry_metrics["project_total_cost"],
+                    "phase_stats": telemetry_metrics["phase_stats"]
                 }
             },
             "slices": slices_data
@@ -111,23 +158,27 @@ def main():
     parser.add_argument("--slices", default=".factory/slices", help="Slices directory")
     # Updated default output path to be inside the slices folder
     parser.add_argument("--output", default=".factory/slices/index.json", help="Output JSON path")
-    parser.add_argument("--schema", default=".factory/contracts/schema_file.json", help="Input schema")
+    parser.add_argument("--schema", default=".factory/contracts/aggregate_slice_info.json", help="Input schema")
+    parser.add_argument("--telemetry", default=".factory/telemetry.json", help="Source telemetry file")
     
     args = parser.parse_args()
     
     try:
         print("--- Starting Registry Generation ---")
         validator = SliceValidator(Path(args.schema))
-        aggregator = RegistryAggregator(Path(args.slices), validator)
+        aggregator = RegistryAggregator(Path(args.slices), validator, Path(args.telemetry))
         writer = RegistryWriter(Path(args.output))
 
         registry_data = aggregator.aggregate()
         writer.write(registry_data)
         
-        print(f"📊 Stage 1 Stats: {registry_data['metadata']['total_slices']} slices | ${registry_data['metadata']['global_finops']['estimated_usd_saved']} saved.")
+        print(f"📊 Stats: {registry_data['metadata']['total_slices']} slices | ${registry_data['metadata']['global_finops']['estimated_usd_saved']} saved.")
+        print(f"💰 Global Investment: {registry_data['metadata']['global_finops']['project_total_cost']['total']} tokens.")
         print("--- Registry Generation Complete ---")
     except Exception as e:
         print(f"❌ Critical Error: {e}")
+        import traceback
+        traceback.print_exc()
         exit(1)
 
 if __name__ == "__main__":
