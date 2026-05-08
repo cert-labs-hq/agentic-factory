@@ -52,7 +52,9 @@
             "total_cache_read_tokens",
             "total_output_tokens",
             "total_combined_tokens",
-            "estimated_usd_saved"
+            "estimated_usd_saved",
+            "project_total_cost",
+            "phase_stats"
           ],
           "properties": {
             "total_prompt_tokens": { "type": "integer", "minimum": 0 },
@@ -60,7 +62,30 @@
             "total_cache_read_tokens": { "type": "integer", "minimum": 0 },
             "total_output_tokens": { "type": "integer", "minimum": 0 },
             "total_combined_tokens": { "type": "integer", "minimum": 0 },
-            "estimated_usd_saved": { "type": "number", "minimum": 0 }
+            "estimated_usd_saved": { "type": "number", "minimum": 0 },
+            "project_total_cost": {
+              "type": "object",
+              "required": ["prompt", "reasoning", "output", "total"],
+              "properties": {
+                "prompt": { "type": "integer", "minimum": 0 },
+                "reasoning": { "type": "integer", "minimum": 0 },
+                "output": { "type": "integer", "minimum": 0 },
+                "total": { "type": "integer", "minimum": 0 }
+              }
+            },
+            "phase_stats": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "required": ["prompt", "reasoning", "output", "total"],
+                "properties": {
+                  "prompt": { "type": "integer", "minimum": 0 },
+                  "reasoning": { "type": "integer", "minimum": 0 },
+                  "output": { "type": "integer", "minimum": 0 },
+                  "total": { "type": "integer", "minimum": 0 }
+                }
+              }
+            }
           }
         }
       }

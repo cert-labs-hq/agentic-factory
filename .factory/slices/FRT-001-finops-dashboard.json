@@ -6,6 +6,7 @@
   "updated_at": "2026-05-08T00:15:00Z",
   "assigned_to": "gemini-cli",
   "phase": "validation",
+  "pr_link": "https://github.com/cert-labs-hq/agentic-factory/pull/2",
   "complexity": "Medium",
   "forecast": {
     "complexity": "Medium",

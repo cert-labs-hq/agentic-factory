@@ -1,21 +1,49 @@
 {
   "project_total_cost": {
-    "prompt": 1561433,
-    "reasoning": 347778,
-    "output": 92954,
-    "total": 2002365
+    "prompt": 1598433,
+    "reasoning": 355778,
+    "output": 95654,
+    "total": 2050065
   },
   "quota_governance": {
     "daily_limit": 500000,
-    "used_24h": 955624,
-    "used_percentage": "191.1%",
+    "used_24h": 1003324,
+    "used_percentage": "200.7%",
     "remaining": 0,
     "remaining_percentage": "0.0%",
-    "hours_to_reset": "22h 40m",
-    "last_updated_at": "2026-05-08T01:28:00Z",
+    "hours_to_reset": "20h 54m",
+    "last_updated_at": "2026-05-08T03:05:59.422161+00:00",
     "next_reset_at": "2026-05-09T00:00:00+00:00"
   },
   "logs": [
+    {
+      "timestamp": "2026-05-08T03:15:00Z",
+      "context": "BKP-004-FINOPS-LIFECYCLE-REFACTOR",
+      "phase": "implementation",
+      "slice_id": "BKP-004",
+      "status": "success",
+      "prompt_source": "prompts/implementation/02_20260507_Add_phases_to_report.md",
+      "tokens": {
+        "prompt": 22000,
+        "reasoning": 5000,
+        "output": 1500,
+        "total": 28500
+      }
+    },
+    {
+      "timestamp": "2026-05-08T01:35:00Z",
+      "context": "FRT-001-UI-IMPLEMENT-INVOCATION",
+      "phase": "implementation",
+      "slice_id": "FRT-001",
+      "status": "success",
+      "prompt_source": "MANUAL: /ui-implement FRT-001",
+      "tokens": {
+        "prompt": 15000,
+        "reasoning": 3000,
+        "output": 1200,
+        "total": 19200
+      }
+    },
     {
       "timestamp": "2026-05-08T01:28:00Z",
       "context": "FRT-001-UI-IMPLEMENTATION",

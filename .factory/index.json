@@ -1,14 +1,14 @@
 {
   "metadata": {
-    "generated_at": "2026-05-08T02:06:53.734116Z",
+    "generated_at": "2026-05-08T03:10:56.914175Z",
     "total_slices": 2,
     "status_summary": {
       "Proposed": 0,
       "Planned": 0,
       "Quota-Blocked": 0,
       "In Progress": 0,
-      "In Review": 0,
-      "Approved": 2,
+      "In Review": 1,
+      "Approved": 1,
       "Warehoused": 0,
       "Rejected": 0
     },
@@ -18,7 +18,45 @@
       "total_cache_read_tokens": 0,
       "total_output_tokens": 2500,
       "total_combined_tokens": 50500,
-      "estimated_usd_saved": 0.0
+      "estimated_usd_saved": 0.0,
+      "project_total_cost": {
+        "prompt": 1598433,
+        "reasoning": 355778,
+        "output": 95654,
+        "total": 2050065
+      },
+      "phase_stats": {
+        "implementation": {
+          "prompt": 277000,
+          "reasoning": 56000,
+          "output": 9900,
+          "total": 342900
+        },
+        "foundations": {
+          "prompt": 1188597,
+          "reasoning": 273110,
+          "output": 79886,
+          "total": 1541593
+        },
+        "planning": {
+          "prompt": 71580,
+          "reasoning": 12776,
+          "output": 2534,
+          "total": 86890
+        },
+        "validation": {
+          "prompt": 15000,
+          "reasoning": 1500,
+          "output": 500,
+          "total": 17000
+        },
+        "specs": {
+          "prompt": 121256,
+          "reasoning": 27392,
+          "output": 5034,
+          "total": 153682
+        }
+      }
     }
   },
   "slices": [
@@ -48,9 +86,9 @@
     {
       "id": "BKP-004",
       "title": "Registry Generator",
-      "status": "Approved",
+      "status": "In Review",
       "created_at": "2026-05-06T18:45:00Z",
-      "updated_at": "2026-05-07T23:58:00Z",
+      "updated_at": "2026-05-08T03:10:00Z",
       "assigned_to": "gemini-cli",
       "phase": "validation",
       "complexity": "Medium",

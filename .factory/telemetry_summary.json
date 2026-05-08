@@ -1,11 +1,25 @@
 {
   "total_cost": {
-    "prompt_tokens": 1545733,
-    "reasoning_tokens": 344528,
-    "output_tokens": 91554,
-    "total_tokens": 1981815
+    "prompt_tokens": 1598433,
+    "reasoning_tokens": 355778,
+    "output_tokens": 95654,
+    "total_tokens": 2050065
   },
   "phases": {
+    "implementation": {
+      "prompt_tokens": 277000,
+      "reasoning_tokens": 56000,
+      "output_tokens": 9900,
+      "total_tokens": 342900,
+      "count": 6
+    },
+    "foundations": {
+      "prompt_tokens": 1188597,
+      "reasoning_tokens": 273110,
+      "output_tokens": 79886,
+      "total_tokens": 1541593,
+      "count": 34
+    },
     "planning": {
       "prompt_tokens": 71580,
       "reasoning_tokens": 12776,
@@ -20,20 +34,6 @@
       "total_tokens": 17000,
       "count": 1
     },
-    "foundations": {
-      "prompt_tokens": 1187897,
-      "reasoning_tokens": 272860,
-      "output_tokens": 79486,
-      "total_tokens": 1540243,
-      "count": 33
-    },
-    "implementation": {
-      "prompt_tokens": 225000,
-      "reasoning_tokens": 45000,
-      "output_tokens": 6000,
-      "total_tokens": 276000,
-      "count": 3
-    },
     "specs": {
       "prompt_tokens": 121256,
       "reasoning_tokens": 27392,
@@ -43,26 +43,26 @@
     }
   },
   "slices": {
-    "FRT-001": {
-      "prompt_tokens": 5000,
-      "reasoning_tokens": 1000,
-      "output_tokens": 1000,
-      "total_tokens": 7000,
-      "count": 1
-    },
     "BKP-004": {
-      "prompt_tokens": 349836,
-      "reasoning_tokens": 69668,
-      "output_tokens": 9568,
-      "total_tokens": 429072,
-      "count": 6
+      "prompt_tokens": 371836,
+      "reasoning_tokens": 74668,
+      "output_tokens": 11068,
+      "total_tokens": 457572,
+      "count": 7
+    },
+    "FRT-001": {
+      "prompt_tokens": 35000,
+      "reasoning_tokens": 7000,
+      "output_tokens": 3400,
+      "total_tokens": 45400,
+      "count": 3
     },
     "Foundational": {
-      "prompt_tokens": 871817,
-      "reasoning_tokens": 195488,
-      "output_tokens": 42181,
-      "total_tokens": 1109486,
-      "count": 19
+      "prompt_tokens": 872517,
+      "reasoning_tokens": 195738,
+      "output_tokens": 42581,
+      "total_tokens": 1110836,
+      "count": 20
     },
     "FACTORY-QUOTA-TRANSPARENCY-010": {
       "prompt_tokens": 45000,
@@ -179,12 +179,12 @@
   },
   "quota_governance": {
     "daily_limit": 500000,
-    "used_24h": 935074,
-    "used_percentage": "187.0%",
+    "used_24h": 1003324,
+    "used_percentage": "200.7%",
     "remaining": 0,
     "remaining_percentage": "0.0%",
-    "hours_to_reset": "22h 52m",
-    "last_updated_at": "2026-05-08T01:07:17.269877+00:00",
+    "hours_to_reset": "20h 54m",
+    "last_updated_at": "2026-05-08T03:05:59.422161+00:00",
     "next_reset_at": "2026-05-09T00:00:00+00:00"
   }
 }
