@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Factory | Operations Center</title>
+    <title>AI Factory | FinOps Operations Center</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style type="text/css">
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
@@ -24,51 +24,67 @@
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
                 <div class="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
-                <h1 class="text-xl font-bold tracking-tight text-white">AI FACTORY <span class="text-emerald-500 text-sm tracking-widest ml-2 uppercase">Lifecycle Status</span></h1>
+                <h1 class="text-xl font-bold tracking-tight text-white uppercase">AI Factory <span class="text-emerald-500">Ops</span></h1>
             </div>
-            <div id="last-updated" class="text-[10px] text-slate-500 uppercase tracking-widest">Syncing Factory Data...</div>
+            <div id="last-updated" class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Factory Uplink: Active</div>
         </div>
     </nav>
 
     <main class="max-w-7xl mx-auto p-6 space-y-6">
         
-        <div class="bg-slate-900 border border-slate-800 p-6 rounded-lg shadow-xl">
-            <p class="text-slate-500 text-[10px] uppercase tracking-widest mb-4">Total Project Lifecycle Cost</p>
-            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-6">
-                <div>
-                    <h2 id="lifecycle-total" class="text-5xl font-bold text-white">0</h2>
-                    <p class="text-[10px] text-slate-500 mt-1 uppercase tracking-tighter">Aggregated Factory tokens (All Phases)</p>
-                </div>
-                <div class="flex space-x-6 text-[11px] font-mono">
-                    <div class="flex flex-col">
-                        <span class="text-slate-500 uppercase text-[9px] mb-1">Prompt</span>
-                        <span id="life-p" class="text-slate-400 font-bold">0</span>
-                    </div>
-                    <div class="flex flex-col border-l border-slate-800 pl-6">
-                        <span class="text-slate-500 uppercase text-[9px] mb-1">Reasoning</span>
-                        <span id="life-r" class="text-blue-400 font-bold">0</span>
-                    </div>
-                    <div class="flex flex-col border-l border-slate-800 pl-6">
-                        <span class="text-slate-500 uppercase text-[9px] mb-1">Output</span>
-                        <span id="life-o" class="text-emerald-400 font-bold">0</span>
-                    </div>
-                </div>
+        <div class="bg-slate-900 border border-slate-800 p-8 rounded-lg shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-4 opacity-10">
+                <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-500"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
             </div>
-            <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden flex">
-                <div id="bar-life-p" class="token-bar-p h-full"></div>
-                <div id="bar-life-r" class="token-bar-r h-full"></div>
-                <div id="bar-life-o" class="token-bar-o h-full"></div>
-            </div>
-        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="bg-slate-900 border border-slate-800 p-5 rounded-lg flex justify-between items-center">
-                <p class="text-slate-500 text-[10px] uppercase tracking-widest">Active Slices</p>
-                <h2 id="count-slices" class="text-3xl font-bold text-white">0</h2>
+            <div class="flex flex-col md:flex-row justify-between gap-8 mb-10">
+                <div class="space-y-2">
+                    <p class="text-slate-500 text-[10px] uppercase tracking-widest">Global Lifecycle Investment</p>
+                    <h2 id="total-usd" class="text-6xl font-bold text-white">$0.00</h2>
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 bg-slate-950 border border-slate-800 rounded text-[10px] font-bold text-emerald-400 uppercase tracking-widest">
+                        <span>Model:</span>
+                        <span class="text-white">gemini 3 flash</span>
+                    </div>
+                </div>
+                
+                <div class="text-right space-y-1">
+                    <p class="text-slate-500 text-[10px] uppercase tracking-widest">Production Efficiency</p>
+                    <h2 id="efficiency-score" class="text-5xl font-bold text-emerald-500">0%</h2>
+                    <p class="text-[10px] text-slate-500 uppercase font-mono">Registry vs Context Tax</p>
+                </div>
             </div>
-            <div class="bg-slate-900 border border-slate-800 p-5 rounded-lg flex justify-between items-center">
-                <p class="text-slate-500 text-[10px] uppercase tracking-widest">Code Related Tokens (Current Registry)</p>
-                <h2 id="count-tokens" class="text-3xl font-bold text-emerald-500">0</h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-end">
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="flex justify-between items-end border-b border-slate-800 pb-2">
+                        <div>
+                            <span id="lifecycle-total" class="text-3xl font-bold text-white">0</span>
+                            <span class="text-[10px] text-slate-500 uppercase ml-2">Total Tokens</span>
+                        </div>
+                        <div class="flex space-x-6 text-[10px] font-mono">
+                            <div class="flex flex-col items-end"><span class="text-slate-500">P</span><span id="life-p" class="text-slate-300">0</span></div>
+                            <div class="flex flex-col items-end"><span class="text-blue-500">R</span><span id="life-r" class="text-blue-400">0</span></div>
+                            <div class="flex flex-col items-end"><span class="text-emerald-500">O</span><span id="life-o" class="text-emerald-400">0</span></div>
+                        </div>
+                    </div>
+                    <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden flex shadow-inner">
+                        <div id="bar-life-p" class="token-bar-p h-full"></div>
+                        <div id="bar-life-r" class="token-bar-r h-full"></div>
+                        <div id="bar-life-o" class="token-bar-o h-full"></div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-950/40 p-5 rounded border border-slate-800/50">
+                    <p class="text-[9px] text-slate-500 uppercase tracking-widest mb-3">Investment by Phase</p>
+                    <div id="phase-bar-container" class="w-full bg-slate-800 h-2 rounded-full overflow-hidden flex mb-4">
+                        </div>
+                    <div class="grid grid-cols-2 gap-x-4 gap-y-1 text-[8px] font-mono uppercase text-slate-500">
+                        <div class="flex items-center"><span class="w-1.5 h-1.5 bg-slate-600 rounded-full mr-1.5"></span> Foundations</div>
+                        <div class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-600 rounded-full mr-1.5"></span> Specs</div>
+                        <div class="flex items-center"><span class="w-1.5 h-1.5 bg-indigo-500 rounded-full mr-1.5"></span> Planning</div>
+                        <div class="flex items-center"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-1.5"></span> Impl.</div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -76,10 +92,10 @@
             <table class="w-full text-left text-sm">
                 <thead>
                     <tr class="bg-slate-950 text-slate-500 text-[10px] uppercase tracking-widest border-b border-slate-800">
-                        <th class="px-6 py-4">ID</th>
-                        <th class="px-6 py-4">Module Name</th>
-                        <th class="px-6 py-4 text-center">Status</th>
-                        <th class="px-6 py-4 text-right">Implementation Split (P/R/O)</th>
+                        <th class="px-6 py-5">ID / Spec</th>
+                        <th class="px-6 py-5">Module Name</th>
+                        <th class="px-6 py-5 text-center">Status</th>
+                        <th class="px-6 py-5 text-right">Unit FinOps Breakdown</th>
                     </tr>
                 </thead>
                 <tbody id="registry-table-body" class="divide-y divide-slate-800">
@@ -90,25 +106,43 @@
 
     <script>
         const format = (n) => n ? n.toLocaleString() : '0';
+        
+        // Rate: $0.50 per 1M Input | $3.00 per 1M Output (Reasoning + Output)
+        const calculateUSD = (p, r, o) => {
+            const cost = (p / 1000000 * 0.50) + ((r + o) / 1000000 * 3.00);
+            return cost;
+        };
 
         function renderMetrics(meta) {
-            document.getElementById('count-slices').innerText = meta.total_slices;
-            document.getElementById('count-tokens').innerText = format(meta.global_finops.total_combined_tokens);
-            document.getElementById('last-updated').innerText = `Last Sync: ${new Date(meta.generated_at).toLocaleTimeString()}`;
+            const f = meta.global_finops;
+            const life = f.project_total_cost;
             
-            // Project Cost at top
-            const life = meta.global_finops.project_total_cost;
+            const totalCost = calculateUSD(life.prompt, life.reasoning, life.output);
+            document.getElementById('total-usd').innerText = `$${totalCost.toFixed(4)}`;
             document.getElementById('lifecycle-total').innerText = format(life.total);
             document.getElementById('life-p').innerText = format(life.prompt);
             document.getElementById('life-r').innerText = format(life.reasoning);
             document.getElementById('life-o').innerText = format(life.output);
 
-            const pPerc = (life.prompt / life.total * 100).toFixed(1);
-            const rPerc = (life.reasoning / life.total * 100).toFixed(1);
-            const oPerc = (life.output / life.total * 100).toFixed(1);
-            document.getElementById('bar-life-p').style.width = pPerc + '%';
-            document.getElementById('bar-life-r').style.width = rPerc + '%';
-            document.getElementById('bar-life-o').style.width = oPerc + '%';
+            // Efficiency calculation
+            const efficiency = (f.total_combined_tokens / life.total * 100).toFixed(2);
+            document.getElementById('efficiency-score').innerText = `${efficiency}%`;
+
+            // Lifecycle Bar
+            document.getElementById('bar-life-p').style.width = (life.prompt/life.total*100)+'%';
+            document.getElementById('bar-life-r').style.width = (life.reasoning/life.total*100)+'%';
+            document.getElementById('bar-life-o').style.width = (life.output/life.total*100)+'%';
+
+            // Phase Breakdown Bar
+            const phases = f.phase_stats;
+            const container = document.getElementById('phase-bar-container');
+            const colors = { foundations: 'bg-slate-600', specs: 'bg-blue-600', planning: 'bg-indigo-500', implementation: 'bg-emerald-500', validation: 'bg-amber-400' };
+            container.innerHTML = Object.entries(phases).map(([name, stat]) => {
+                const p = (stat.total / life.total * 100).toFixed(1);
+                return `<div style="width: ${p}%" class="${colors[name] || 'bg-slate-400'} h-full border-r border-slate-900/40" title="${name}: ${p}%"></div>`;
+            }).join('');
+
+            document.getElementById('last-updated').innerText = `Last Sync: ${new Date(meta.generated_at).toLocaleTimeString()}`;
         }
 
         function renderTable(slices) {
@@ -116,40 +150,45 @@
             container.innerHTML = slices.map(s => {
                 const u = s.token_usage || s.forecast?.estimated_tokens || { prompt: 0, reasoning: 0, output: 0 };
                 const total = u.total || (u.prompt + u.reasoning + u.output);
-                const pPerc = (u.prompt / total * 100) || 0;
-                const rPerc = (u.reasoning / total * 100) || 0;
-                const oPerc = (u.output / total * 100) || 0;
-
-                // Color mapping for Status
+                const cost = calculateUSD(u.prompt, u.reasoning, u.output);
+                
                 let statusColor = 'text-slate-400 border-slate-700 bg-slate-800';
                 if(s.status === 'Approved') statusColor = 'text-emerald-400 border-emerald-500/30 bg-emerald-500/10';
                 if(s.status === 'In Review') statusColor = 'text-blue-400 border-blue-500/30 bg-blue-500/10';
 
                 return `
-                    <tr class="hover:bg-slate-800/40 transition-all group">
-                        <td class="px-6 py-4 font-bold text-white text-xs">
-                            <a href="../${s.spec_path}" class="hover:text-emerald-400 decoration-emerald-500/40 underline underline-offset-4">${s.id}</a>
+                    <tr class="hover:bg-slate-800/40 transition-all text-xs">
+                        <td class="px-6 py-5 font-bold text-white font-mono">
+                            <a href="../${s.spec_path}" class="hover:text-emerald-400 underline underline-offset-8 decoration-emerald-500/20 decoration-1">
+                                ${s.id}
+                            </a>
                         </td>
-                        <td class="px-6 py-4">
-                            <div class="text-slate-300 text-xs font-bold">${s.title}</div>
-                            <div class="text-[9px] text-slate-500 uppercase mt-0.5">${s.phase}</div>
+                        <td class="px-6 py-5">
+                            <div class="text-slate-200 font-bold">${s.title}</div>
+                            <div class="text-[9px] text-slate-500 uppercase mt-1 tracking-tighter">${s.phase} // ${s.assigned_to}</div>
                         </td>
-                        <td class="px-6 py-4 text-center">
+                        <td class="px-6 py-5 text-center">
                             <span class="px-2 py-0.5 rounded text-[9px] border uppercase font-bold ${statusColor}">${s.status}</span>
                         </td>
-                        <td class="px-6 py-4">
-                            <div class="flex flex-col items-end space-y-1.5">
-                                <div class="flex space-x-3 text-[10px] font-mono leading-none">
-                                    <span class="text-slate-400">${format(u.prompt)}</span>
-                                    <span class="text-blue-400">${format(u.reasoning)}</span>
-                                    <span class="text-emerald-400">${format(u.output)}</span>
+                        <td class="px-6 py-5">
+                            <div class="flex flex-col items-end space-y-2">
+                                <div class="flex items-center space-x-4">
+                                    <div class="text-right">
+                                        <div class="text-emerald-400 font-bold font-mono">$${cost.toFixed(4)}</div>
+                                        <div class="text-[9px] text-slate-600 font-bold uppercase">Unit Cost</div>
+                                    </div>
+                                    <div class="flex space-x-3 text-[10px] font-mono leading-none border-l border-slate-800 pl-4">
+                                        <div class="flex flex-col items-end"><span class="text-slate-500 text-[8px]">P</span><span>${format(u.prompt)}</span></div>
+                                        <div class="flex flex-col items-end"><span class="text-blue-500 text-[8px]">R</span><span class="text-blue-400">${format(u.reasoning)}</span></div>
+                                        <div class="flex flex-col items-end"><span class="text-emerald-500 text-[8px]">O</span><span>${format(u.output)}</span></div>
+                                    </div>
                                 </div>
-                                <div class="w-32 bg-slate-800 h-1.5 rounded-full overflow-hidden flex">
-                                    <div style="width: ${pPerc}%" class="token-bar-p"></div>
-                                    <div style="width: ${rPerc}%" class="token-bar-r"></div>
-                                    <div style="width: ${oPerc}%" class="token-bar-o"></div>
+                                <div class="w-40 bg-slate-800 h-1.5 rounded-full overflow-hidden flex shadow-inner">
+                                    <div style="width: ${(u.prompt/total*100)}%" class="token-bar-p h-full"></div>
+                                    <div style="width: ${(u.reasoning/total*100)}%" class="token-bar-r h-full"></div>
+                                    <div style="width: ${(u.output/total*100)}%" class="token-bar-o h-full"></div>
                                 </div>
-                                <span class="text-[9px] text-slate-500 font-bold uppercase tracking-tighter">Total: ${format(total)}</span>
+                                <span class="text-[9px] text-slate-500 font-bold uppercase tracking-tighter">Usage: ${format(total)} tokens</span>
                             </div>
                         </td>
                     </tr>`;
@@ -163,14 +202,10 @@
                 renderMetrics(data.metadata);
                 renderTable(data.slices);
             } catch (e) {
-                console.error('Factory Connection Error:', e);
-                document.getElementById('registry-table-body').innerHTML = `
-                    <tr><td colspan="4" class="px-6 py-12 text-center text-red-500 font-bold uppercase text-[10px] tracking-widest">
-                        Uplink Failure: .factory/index.json not detected
-                    </td></tr>`;
+                console.error('Uplink Interrupted:', e);
             }
         }
-        window.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>

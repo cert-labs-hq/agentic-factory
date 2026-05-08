@@ -1,17 +1,17 @@
 {
   "total_cost": {
-    "prompt_tokens": 1598433,
-    "reasoning_tokens": 355778,
-    "output_tokens": 95654,
-    "total_tokens": 2050065
+    "prompt_tokens": 1600483,
+    "reasoning_tokens": 356528,
+    "output_tokens": 96454,
+    "total_tokens": 2053665
   },
   "phases": {
     "implementation": {
-      "prompt_tokens": 277000,
-      "reasoning_tokens": 56000,
-      "output_tokens": 9900,
-      "total_tokens": 342900,
-      "count": 6
+      "prompt_tokens": 279050,
+      "reasoning_tokens": 56750,
+      "output_tokens": 10700,
+      "total_tokens": 346500,
+      "count": 8
     },
     "foundations": {
       "prompt_tokens": 1188597,
@@ -44,11 +44,11 @@
   },
   "slices": {
     "BKP-004": {
-      "prompt_tokens": 371836,
-      "reasoning_tokens": 74668,
-      "output_tokens": 11068,
-      "total_tokens": 457572,
-      "count": 7
+      "prompt_tokens": 373886,
+      "reasoning_tokens": 75418,
+      "output_tokens": 11868,
+      "total_tokens": 461172,
+      "count": 9
     },
     "FRT-001": {
       "prompt_tokens": 35000,
@@ -179,12 +179,12 @@
   },
   "quota_governance": {
     "daily_limit": 500000,
-    "used_24h": 1003324,
-    "used_percentage": "200.7%",
+    "used_24h": 761350,
+    "used_percentage": "152.3%",
     "remaining": 0,
     "remaining_percentage": "0.0%",
-    "hours_to_reset": "20h 54m",
-    "last_updated_at": "2026-05-08T03:05:59.422161+00:00",
+    "hours_to_reset": "20h 20m",
+    "last_updated_at": "2026-05-08T03:39:16.448690+00:00",
     "next_reset_at": "2026-05-09T00:00:00+00:00"
   }
 }

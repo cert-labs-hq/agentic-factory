@@ -1,21 +1,49 @@
 {
   "project_total_cost": {
-    "prompt": 1598433,
-    "reasoning": 355778,
-    "output": 95654,
-    "total": 2050065
+    "prompt": 1600483,
+    "reasoning": 356528,
+    "output": 96454,
+    "total": 2053665
   },
   "quota_governance": {
     "daily_limit": 500000,
-    "used_24h": 1003324,
-    "used_percentage": "200.7%",
+    "used_24h": 761350,
+    "used_percentage": "152.3%",
     "remaining": 0,
     "remaining_percentage": "0.0%",
-    "hours_to_reset": "20h 54m",
-    "last_updated_at": "2026-05-08T03:05:59.422161+00:00",
+    "hours_to_reset": "20h 20m",
+    "last_updated_at": "2026-05-08T03:39:16.448690+00:00",
     "next_reset_at": "2026-05-09T00:00:00+00:00"
   },
   "logs": [
+    {
+      "timestamp": "2026-05-08T03:25:00Z",
+      "context": "BKP-004-TELEMETRY-LOGGING",
+      "phase": "implementation",
+      "slice_id": "BKP-004",
+      "status": "success",
+      "prompt_source": "MANUAL: I need you to look into all the prompts I made after 02_20260507_Add_phases_to_report.md and make the entries on the telemetry.json logs. Add them to the BKP-004 slice, and this prompt I'm asking too",
+      "tokens": {
+        "prompt": 1350,
+        "reasoning": 500,
+        "output": 400,
+        "total": 2250
+      }
+    },
+    {
+      "timestamp": "2026-05-08T01:27:00Z",
+      "context": "BKP-004-TELEMETRY-CORRECTION",
+      "phase": "implementation",
+      "slice_id": "BKP-004",
+      "status": "success",
+      "prompt_source": "MANUAL: But you miss the most important telemetry log entry, the one when I call /ui-implement FRT-001",
+      "tokens": {
+        "prompt": 700,
+        "reasoning": 250,
+        "output": 400,
+        "total": 1350
+      }
+    },
     {
       "timestamp": "2026-05-08T03:15:00Z",
       "context": "BKP-004-FINOPS-LIFECYCLE-REFACTOR",
