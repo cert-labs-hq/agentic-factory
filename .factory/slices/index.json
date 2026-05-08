@@ -1,14 +1,14 @@
 {
   "metadata": {
-    "generated_at": "2026-05-08T01:19:28.188182Z",
+    "generated_at": "2026-05-08T02:06:53.734116Z",
     "total_slices": 2,
     "status_summary": {
       "Proposed": 0,
       "Planned": 0,
       "Quota-Blocked": 0,
       "In Progress": 0,
-      "In Review": 1,
-      "Approved": 1,
+      "In Review": 0,
+      "Approved": 2,
       "Warehoused": 0,
       "Rejected": 0
     },
@@ -25,7 +25,7 @@
     {
       "id": "FRT-001",
       "title": "FinOps Dashboard",
-      "status": "In Review",
+      "status": "Approved",
       "created_at": "2026-05-07T23:59:00Z",
       "updated_at": "2026-05-08T00:15:00Z",
       "assigned_to": "gemini-cli",
