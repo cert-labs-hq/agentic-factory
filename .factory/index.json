@@ -1,36 +1,21 @@
 {
   "metadata": {
-    "generated_at": "2026-05-08T03:10:56.914175Z",
+    "generated_at": "2026-05-08T04:08:27.210774Z",
     "total_slices": 2,
-    "status_summary": {
-      "Proposed": 0,
-      "Planned": 0,
-      "Quota-Blocked": 0,
-      "In Progress": 0,
-      "In Review": 1,
-      "Approved": 1,
-      "Warehoused": 0,
-      "Rejected": 0
-    },
     "global_finops": {
-      "total_prompt_tokens": 40000,
-      "total_reasoning_tokens": 8000,
-      "total_cache_read_tokens": 0,
-      "total_output_tokens": 2500,
-      "total_combined_tokens": 50500,
-      "estimated_usd_saved": 0.0,
+      "total_combined_tokens": 2053665,
       "project_total_cost": {
-        "prompt": 1598433,
-        "reasoning": 355778,
-        "output": 95654,
-        "total": 2050065
+        "prompt": 1600483,
+        "reasoning": 356528,
+        "output": 96454,
+        "total": 2053665
       },
       "phase_stats": {
         "implementation": {
-          "prompt": 277000,
-          "reasoning": 56000,
-          "output": 9900,
-          "total": 342900
+          "prompt": 279050,
+          "reasoning": 56750,
+          "output": 10700,
+          "total": 346500
         },
         "foundations": {
           "prompt": 1188597,
@@ -68,6 +53,7 @@
       "updated_at": "2026-05-08T00:15:00Z",
       "assigned_to": "gemini-cli",
       "phase": "validation",
+      "pr_link": "https://github.com/cert-labs-hq/agentic-factory/pull/2",
       "complexity": "Medium",
       "forecast": {
         "complexity": "Medium",
@@ -81,7 +67,13 @@
       "dependencies": [
         "BKP-004"
       ],
-      "metadata_version": "1.1.0"
+      "metadata_version": "1.1.0",
+      "token_usage": {
+        "prompt": 35000,
+        "reasoning": 7000,
+        "output": 3400,
+        "total": 45400
+      }
     },
     {
       "id": "BKP-004",
@@ -91,6 +83,7 @@
       "updated_at": "2026-05-08T03:10:00Z",
       "assigned_to": "gemini-cli",
       "phase": "validation",
+      "pr_link": "https://github.com/cert-labs-hq/agentic-factory/pull/3",
       "complexity": "Medium",
       "forecast": {
         "complexity": "Medium",
@@ -102,7 +95,13 @@
       },
       "spec_path": "docs/specs/product/004-registry-generator.md",
       "dependencies": [],
-      "metadata_version": "1.0"
+      "metadata_version": "1.0",
+      "token_usage": {
+        "prompt": 373886,
+        "reasoning": 75418,
+        "output": 11868,
+        "total": 461172
+      }
     }
   ]
 }
