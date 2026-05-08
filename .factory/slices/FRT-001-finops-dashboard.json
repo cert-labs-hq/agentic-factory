@@ -1,7 +1,7 @@
 {
   "id": "FRT-001",
   "title": "FinOps Dashboard",
-  "status": "In Review",
+  "status": "Approved",
   "created_at": "2026-05-07T23:59:00Z",
   "updated_at": "2026-05-08T00:15:00Z",
   "assigned_to": "gemini-cli",
