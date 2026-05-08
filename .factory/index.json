@@ -1,14 +1,14 @@
 {
   "metadata": {
-    "generated_at": "2026-05-08T04:08:27.210774Z",
+    "generated_at": "2026-05-08T04:30:00.508164Z",
     "total_slices": 2,
     "global_finops": {
-      "total_combined_tokens": 2053665,
+      "total_combined_tokens": 2145665,
       "project_total_cost": {
-        "prompt": 1600483,
-        "reasoning": 356528,
-        "output": 96454,
-        "total": 2053665
+        "prompt": 1675483,
+        "reasoning": 371528,
+        "output": 98654,
+        "total": 2145665
       },
       "phase_stats": {
         "implementation": {

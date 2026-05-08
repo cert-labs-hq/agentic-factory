@@ -7,49 +7,56 @@ from collections import defaultdict
 
 class RegistryGenerator:
     def __init__(self):
+        # Path resolution
         self.root = Path(__file__).resolve().parent.parent if Path(__file__).resolve().parent.name == "src" else Path(__file__).resolve().parent
         self.slices_dir = self.root / ".factory" / "slices"
         self.output_path = self.root / ".factory" / "index.json"
         self.telemetry_path = self.root / ".factory" / "telemetry.json"
         self.slice_pattern = re.compile(r"^[a-zA-Z]{2,4}-?[0-9]{3,}.*\.json$", re.IGNORECASE)
 
-    def get_telemetry_data(self):
-        """Aggregates totals and per-slice usage from logs."""
-        data = {
+    def aggregate_telemetry(self):
+        """
+        Calculates project totals and phase stats from logs.
+        Ignores the stale 'project_total_cost' header in telemetry.json to ensure congruence.
+        """
+        # We start at zero and build the truth from the logs
+        metrics = {
             "global": {"prompt": 0, "reasoning": 0, "output": 0, "total": 0},
             "phases": {},
             "slices": defaultdict(lambda: {"prompt": 0, "reasoning": 0, "output": 0, "total": 0})
         }
         
-        if not self.telemetry_path.exists(): return data
+        if not self.telemetry_path.exists(): return metrics
 
         with open(self.telemetry_path, 'r') as f:
             t_data = json.load(f)
             logs = t_data.get("logs", [])
-            
-            # Use the explicit global total if provided
-            data["global"] = t_data.get("project_total_cost", data["global"])
 
             for log in logs:
                 sid = log.get("slice_id")
                 phase = log.get("phase", "unknown").lower()
                 tokens = log.get("tokens", {})
                 
-                # 1. Per-Phase Aggregation
-                if phase not in data["phases"]:
-                    data["phases"][phase] = {"prompt": 0, "reasoning": 0, "output": 0, "total": 0}
-                
-                # 2. Per-Slice Aggregation
+                # Update Global, Phase, and Slice accumulators
                 for k in ["prompt", "reasoning", "output", "total"]:
                     val = tokens.get(k, 0)
-                    data["phases"][phase][k] += val
+                    
+                    # 1. Global (The Source of Truth)
+                    metrics["global"][k] += val
+                    
+                    # 2. Phase Breakdown
+                    if phase not in metrics["phases"]:
+                        metrics["phases"][phase] = {"prompt": 0, "reasoning": 0, "output": 0, "total": 0}
+                    metrics["phases"][phase][k] += val
+                    
+                    # 3. Individual Slice Usage
                     if sid:
-                        data["slices"][sid][k] += val
+                        metrics["slices"][sid][k] += val
 
-        return data
+        return metrics
 
     def aggregate(self):
-        tele = self.get_telemetry_data()
+        tele = self.aggregate_telemetry()
         final_slices = []
 
         if self.slices_dir.exists():
@@ -60,14 +67,13 @@ class RegistryGenerator:
                     with open(p, 'r') as f:
                         s_data = json.load(f)
                         sid = s_data.get("id")
-                        
-                        # SYNC LOGIC: Overwrite file data with actual Telemetry sums
+                        # Sync slice object with actual telemetry usage
                         if sid in tele["slices"]:
                             s_data["token_usage"] = tele["slices"][sid]
-                        
                         final_slices.append(s_data)
                 except: continue
 
+        # Final Congruent Assembly
         index = {
             "metadata": {
                 "generated_at": datetime.utcnow().isoformat() + "Z",
@@ -83,7 +89,8 @@ class RegistryGenerator:
 
         with open(self.output_path, 'w') as f:
             json.dump(index, f, indent=2)
-        print(f"✅ Sync Complete: {len(final_slices)} slices synced with Telemetry.")
+            
+        print(f"✅ Congruence Sync: Project Total ({tele['global']['total']}) matches sum of all phases.")
 
 if __name__ == "__main__":
     RegistryGenerator().aggregate()
