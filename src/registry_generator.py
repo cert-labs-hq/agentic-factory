@@ -156,8 +156,8 @@ class RegistryWriter:
 def main():
     parser = argparse.ArgumentParser(description="BKP-004 Registry Aggregator")
     parser.add_argument("--slices", default=".factory/slices", help="Slices directory")
-    # Updated default output path to be inside the slices folder
-    parser.add_argument("--output", default=".factory/slices/index.json", help="Output JSON path")
+    # Updated default output path to be in the .factory folder
+    parser.add_argument("--output", default=".factory/index.json", help="Output JSON path")
     parser.add_argument("--schema", default=".factory/contracts/aggregate_slice_info.json", help="Input schema")
     parser.add_argument("--telemetry", default=".factory/telemetry.json", help="Source telemetry file")
     
