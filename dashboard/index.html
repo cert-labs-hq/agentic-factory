@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Factory | Congruent SSD Pipeline</title>
+    <title>AI Factory | SSD Expert Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
@@ -12,7 +12,28 @@
         .token-bar-r { background-color: #3b82f6; }
         .token-bar-o { background-color: #10b981; }
         
-        .phase-step { position: relative; min-height: 200px; }
+        /* Tooltip Style */
+        .tooltip-trigger { border-bottom: 1px dashed #475569; cursor: help; }
+        .tooltip-content {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.2s;
+            position: absolute;
+            z-index: 100;
+            width: 200px;
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            line-height: 1.4;
+            color: #94a3b8;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+        }
+        .group:hover .tooltip-content { visibility: visible; opacity: 1; }
+
+        .phase-step { position: relative; min-height: 220px; }
         @media (min-width: 1024px) {
             .phase-step:not(:last-child)::after {
                 content: '→';
@@ -30,13 +51,14 @@
     <nav class="border-b border-slate-800 p-4 bg-slate-950/90 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-4">
-                <h1 class="text-lg font-bold text-white uppercase italic tracking-tighter">AI Factory <span class="text-emerald-500 underline decoration-emerald-500/20">Congruence</span></h1>
-                <div class="px-3 py-1 bg-slate-900 border border-slate-700 rounded text-[9px] font-bold text-white uppercase flex items-center space-x-2">
+                <h1 class="text-lg font-bold text-white uppercase italic tracking-tighter">AI Factory <span class="text-emerald-500">Pipeline</span></h1>
+                <div class="group relative px-3 py-1 bg-slate-900 border border-slate-700 rounded text-[9px] font-bold text-white uppercase flex items-center space-x-2">
                     <span class="text-slate-500 italic">Compute:</span>
-                    <span class="text-emerald-400">gemini 1.5 flash</span>
+                    <span class="tooltip-trigger text-emerald-400">gemini 1.5 flash</span>
+                    <div class="tooltip-content top-full mt-2 left-0">Multimodal model optimized for speed and large context windows. Used for architectural reasoning and code generation.</div>
                 </div>
             </div>
-            <div id="status-tag" class="text-[9px] text-slate-500 uppercase tracking-widest font-bold border border-slate-800 px-2 py-1 rounded">Sync: OK</div>
+            <div id="status-tag" class="text-[9px] text-slate-500 uppercase tracking-widest font-bold border border-slate-800 px-2 py-1 rounded italic">Telemetry: Synchronized</div>
         </div>
     </nav>
 
@@ -44,24 +66,38 @@
         
         <div class="bg-slate-900 border border-slate-800 p-8 rounded-lg shadow-2xl">
             <div class="flex flex-col md:flex-row justify-between mb-8 border-b border-slate-800 pb-8">
-                <div>
-                    <p class="text-slate-500 text-[10px] uppercase mb-1 tracking-widest font-bold">Total Lifecycle Investment</p>
+                <div class="group relative">
+                    <p class="tooltip-trigger text-slate-500 text-[10px] uppercase mb-1 tracking-widest font-bold">Total Lifecycle Investment</p>
+                    <div class="tooltip-content top-full mt-1">The absolute cost of all tokens consumed by the factory, including foundational overhead, specifications, and failed turns.</div>
                     <h2 id="total-usd" class="text-6xl font-bold text-white tracking-tighter">$0.00</h2>
-                    <p class="text-[8px] text-slate-600 mt-2 font-bold uppercase tracking-widest italic">*SSD Reality: $2.50/1M Prompt | $10.00/1M Reasoning+Output</p>
+                    <p class="text-[8px] text-slate-600 mt-2 font-bold uppercase tracking-widest italic">*Pricing Model: $2.50 Input | $10.00 Reasoning+Output</p>
                 </div>
-                <div class="text-right">
-                    <p class="text-slate-500 text-[10px] uppercase mb-1 tracking-widest font-bold text-emerald-500/50">Production Efficiency</p>
+                <div class="text-right group relative">
+                    <p class="tooltip-trigger text-slate-500 text-[10px] uppercase mb-1 tracking-widest font-bold text-emerald-500/50">Production Efficiency</p>
+                    <div class="tooltip-content top-full mt-1 right-0">The 'ROI' of your tokens. Ratio of tokens effectively assigned to product slices vs. total context overhead.</div>
                     <h2 id="efficiency-score" class="text-5xl font-bold text-emerald-500">0%</h2>
-                    <p class="text-[9px] text-slate-500 uppercase font-bold tracking-tighter italic">Value Ratio</p>
+                    <p class="text-[9px] text-slate-500 uppercase font-bold tracking-tighter italic">Factory ROI</p>
                 </div>
             </div>
             <div class="space-y-4">
                 <div class="flex justify-between items-end">
-                    <span id="lifecycle-total" class="text-3xl font-bold text-white leading-none">0 <span class="text-xs text-slate-600">TOKENS</span></span>
+                    <div class="group relative">
+                        <span id="lifecycle-total" class="tooltip-trigger text-3xl font-bold text-white leading-none">0 <span class="text-xs text-slate-600">TOKENS</span></span>
+                        <div class="tooltip-content bottom-full mb-2">Total combined Prompt, Reasoning, and Output tokens logged via telemetry.</div>
+                    </div>
                     <div class="flex space-x-6 text-[10px] font-mono">
-                        <div class="flex flex-col items-end"><span class="text-slate-500 uppercase text-[8px]">Prompt</span><span id="life-p">0</span></div>
-                        <div class="flex flex-col items-end"><span class="text-blue-500 uppercase text-[8px]">Thinking</span><span id="life-r">0</span></div>
-                        <div class="flex flex-col items-end"><span class="text-emerald-500 uppercase text-[8px]">Output</span><span id="life-o">0</span></div>
+                        <div class="flex flex-col items-end group relative">
+                            <span class="tooltip-trigger text-slate-500 uppercase text-[8px]">Prompt</span><span id="life-p">0</span>
+                            <div class="tooltip-content bottom-full mb-2 right-0">Input context: The code, specs, and rules the AI 'reads'.</div>
+                        </div>
+                        <div class="flex flex-col items-end group relative">
+                            <span class="tooltip-trigger text-blue-500 uppercase text-[8px]">Thinking</span><span id="life-r">0</span>
+                            <div class="tooltip-content bottom-full mb-2 right-0">Internal reasoning steps (hidden tokens) used to solve complex logic.</div>
+                        </div>
+                        <div class="flex flex-col items-end group relative">
+                            <span class="tooltip-trigger text-emerald-500 uppercase text-[8px]">Output</span><span id="life-o">0</span>
+                            <div class="tooltip-content bottom-full mb-2 right-0">The actual code or text generated by the agent.</div>
+                        </div>
                     </div>
                 </div>
                 <div class="w-full bg-slate-950 h-3 rounded-full overflow-hidden flex border border-slate-800">
@@ -81,7 +117,10 @@
         <div class="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden shadow-2xl">
             <div class="bg-slate-950 p-4 border-b border-slate-800 flex justify-between">
                 <span class="text-[10px] text-slate-500 uppercase font-bold tracking-widest italic">Registry Aggregation</span>
-                <span id="congruence-check" class="text-[9px] text-slate-600 font-bold uppercase">Congruence: Scanning...</span>
+                <span id="congruence-check" class="text-[9px] text-slate-600 font-bold uppercase group relative cursor-help">
+                    Congruence: Scanning...
+                    <div class="tooltip-content bottom-full mb-2 right-0">Validates that the sum of all phase tokens exactly matches the global lifecycle total. Zero drift = 100% data integrity.</div>
+                </span>
             </div>
             <table class="w-full text-left">
                 <tbody id="registry-table-body" class="divide-y divide-slate-800"></tbody>
@@ -96,11 +135,11 @@
     const SSD_ORDER = ['foundations', 'specs', 'planning', 'implementation', 'validation'];
     
     const PHASE_CONFIG = {
-        foundations: { color: 'border-slate-600', icon: '🏗️', label: 'Foundations' },
-        specs: { color: 'border-blue-600', icon: '📋', label: 'Master Specs' },
-        planning: { color: 'border-indigo-500', icon: '🎯', label: 'Planning' },
-        implementation: { color: 'border-emerald-500', icon: '⚙️', label: 'Implementation' },
-        validation: { color: 'border-amber-400', icon: '🧪', label: 'Validation' }
+        foundations: { color: 'border-slate-600', icon: '🏗️', label: 'Foundations', desc: 'Rules and architectural context the agent must remember.' },
+        specs: { color: 'border-blue-600', icon: '📋', label: 'Master Specs', desc: 'Feature requirements and technical contracts.' },
+        planning: { color: 'border-indigo-500', icon: '🎯', label: 'Planning', desc: 'Agent logic used to map implementation steps.' },
+        implementation: { color: 'border-emerald-500', icon: '⚙️', label: 'Implementation', desc: 'Actual code generation and logic application.' },
+        validation: { color: 'border-amber-400', icon: '🧪', label: 'Validation', desc: 'Auditing and testing against the original spec.' }
     };
 
     function renderPhaseFlow(phases, lifeTotal) {
@@ -112,10 +151,11 @@
             const cost = calculateUSD(stat.prompt, stat.reasoning, stat.output);
 
             return `
-                <div class="phase-step bg-slate-900 border border-slate-800 p-6 rounded-lg border-l-4 ${cfg.color} flex flex-col justify-between group hover:border-white/20 transition-all">
+                <div class="phase-step group bg-slate-900 border border-slate-800 p-6 rounded-lg border-l-4 ${cfg.color} flex flex-col justify-between hover:border-white/20 transition-all">
                     <div class="mb-4">
                         <div class="flex justify-between items-center mb-1">
-                            <span class="text-[10px] text-slate-400 font-bold uppercase tracking-tighter">${cfg.label}</span>
+                            <span class="tooltip-trigger text-[10px] text-slate-400 font-bold uppercase tracking-tighter">${cfg.label}</span>
+                            <div class="tooltip-content top-full mt-2 left-0">${cfg.desc}</div>
                             <span>${cfg.icon}</span>
                         </div>
                         <div class="text-2xl font-bold text-white">$${cost.toFixed(2)}</div>
@@ -123,18 +163,9 @@
                     </div>
                     
                     <div class="space-y-2 bg-slate-950/50 p-3 rounded-md border border-slate-800/50">
-                        <div class="flex justify-between items-center text-[9px] font-mono">
-                            <span class="text-slate-500">PROMPT</span>
-                            <span class="text-white">${format(stat.prompt)}</span>
-                        </div>
-                        <div class="flex justify-between items-center text-[9px] font-mono">
-                            <span class="text-blue-500">THINK</span>
-                            <span class="text-blue-400">${format(stat.reasoning)}</span>
-                        </div>
-                        <div class="flex justify-between items-center text-[9px] font-mono border-t border-slate-800 pt-1.5">
-                            <span class="text-emerald-500">OUTPUT</span>
-                            <span class="text-emerald-400">${format(stat.output)}</span>
-                        </div>
+                        <div class="flex justify-between items-center text-[9px] font-mono"><span class="text-slate-500">P</span><span class="text-white">${format(stat.prompt)}</span></div>
+                        <div class="flex justify-between items-center text-[9px] font-mono"><span class="text-blue-500">R</span><span class="text-blue-400">${format(stat.reasoning)}</span></div>
+                        <div class="flex justify-between items-center text-[9px] font-mono border-t border-slate-800 pt-1.5"><span class="text-emerald-500">O</span><span class="text-emerald-400">${format(stat.output)}</span></div>
                     </div>
                 </div>`;
         }).join('');
@@ -145,29 +176,26 @@
         const life = f.project_total_cost;
         
         document.getElementById('total-usd').innerText = `$${calculateUSD(life.prompt, life.reasoning, life.output).toFixed(2)}`;
-        document.getElementById('lifecycle-total').innerHTML = `${format(life.total)} <span class="text-xs text-slate-600 uppercase">TOKENS</span>`;
+        document.getElementById('lifecycle-total').innerHTML = `${format(life.total)} <span class="text-xs text-slate-600 uppercase italic">tkn</span>`;
         document.getElementById('life-p').innerText = format(life.prompt);
         document.getElementById('life-r').innerText = format(life.reasoning);
         document.getElementById('life-o').innerText = format(life.output);
 
-        // Efficiency Calculation
         const prodTokens = slices.reduce((acc, s) => acc + (s.token_usage?.total || 0), 0);
         document.getElementById('efficiency-score').innerText = `${((prodTokens / life.total) * 100).toFixed(2)}%`;
 
-        // Bars
         document.getElementById('bar-life-p').style.width = (life.prompt / life.total * 100) + '%';
         document.getElementById('bar-life-r').style.width = (life.reasoning / life.total * 100) + '%';
         document.getElementById('bar-life-o').style.width = (life.output / life.total * 100) + '%';
 
-        // Congruence Check
+        // Check Congruence
         const sumPhases = Object.values(f.phase_stats).reduce((acc, curr) => acc + curr.total, 0);
-        const diff = Math.abs(life.total - sumPhases);
         const checkEl = document.getElementById('congruence-check');
-        if(diff === 0) {
-            checkEl.innerText = "CONGRUENCE: 100% (PHASES MATCH TOTAL)";
+        if(Math.abs(life.total - sumPhases) === 0) {
+            checkEl.innerText = "Congruence: 100% Verified";
             checkEl.classList.add('text-emerald-500');
         } else {
-            checkEl.innerText = `CONGRUENCE ERROR: ${format(diff)} TOKENS DRIFT`;
+            checkEl.innerText = `Drift Detected: ${format(Math.abs(life.total - sumPhases))}`;
             checkEl.classList.add('text-amber-500');
         }
 
@@ -179,33 +207,29 @@
         container.innerHTML = slices.map(s => {
             const u = s.token_usage || { prompt: 0, reasoning: 0, output: 0, total: 0 };
             const cost = calculateUSD(u.prompt, u.reasoning, u.output);
-            let statusStyle = 'text-slate-500 border-slate-800 bg-slate-900';
-            if(s.status === 'Approved') statusStyle = 'text-emerald-400 border-emerald-500/20 bg-emerald-500/5';
-            if(s.status === 'In Review') statusStyle = 'text-blue-400 border-blue-500/20 bg-blue-500/5';
-
+            
             return `
                 <tr class="hover:bg-slate-800/20 transition-all text-[11px]">
-                    <td class="px-6 py-6">
+                    <td class="px-6 py-6 group relative">
                         <div class="flex flex-col">
                             <span class="font-bold text-white italic uppercase tracking-tighter mb-0.5">${s.id}</span>
                             <span class="text-slate-400 font-bold">${s.title}</span>
-                            <span class="text-[9px] text-slate-600 font-bold uppercase mt-1 tracking-widest italic">${s.phase}</span>
+                            <span class="tooltip-trigger text-[9px] text-slate-600 font-bold uppercase mt-1 tracking-widest italic">${s.phase}</span>
+                            <div class="tooltip-content top-full mt-1">Status: ${s.status} | Developer: ${s.assigned_to || 'Agent'}</div>
                         </div>
                     </td>
-                    <td class="px-6 py-6 text-center">
-                        <span class="px-2 py-0.5 border rounded text-[8px] uppercase font-bold tracking-widest ${statusStyle}">${s.status}</span>
-                    </td>
-                    <td class="px-6 py-6">
+                    <td class="px-6 py-6 text-right group relative">
                         <div class="flex flex-col items-end space-y-2">
                             <div class="flex items-center space-x-6">
                                 <div class="text-right">
                                     <div class="text-emerald-400 font-bold text-base">$${cost.toFixed(2)}</div>
-                                    <div class="text-[8px] text-slate-600 uppercase font-bold tracking-tighter italic">Unit Investment</div>
+                                    <div class="tooltip-trigger text-[8px] text-slate-600 uppercase font-bold tracking-tighter italic">Unit Investment</div>
+                                    <div class="tooltip-content bottom-full mb-2 right-0">The specific financial cost of all turns associated with this slice ID in telemetry logs.</div>
                                 </div>
                                 <div class="flex space-x-3 text-[10px] font-mono border-l border-slate-800 pl-6">
-                                    <div class="flex flex-col items-end"><span class="text-slate-600 text-[8px]">P</span><span>${format(u.prompt)}</span></div>
-                                    <div class="flex flex-col items-end"><span class="text-blue-600 text-[8px]">R</span><span class="text-blue-400">${format(u.reasoning)}</span></div>
-                                    <div class="flex flex-col items-end"><span class="text-emerald-600 text-[8px]">O</span><span>${format(u.output)}</span></div>
+                                    <div class="flex flex-col items-end"><span>${format(u.prompt)}</span><span class="text-[8px] text-slate-600">P</span></div>
+                                    <div class="flex flex-col items-end"><span class="text-blue-400">${format(u.reasoning)}</span><span class="text-[8px] text-blue-600">R</span></div>
+                                    <div class="flex flex-col items-end"><span>${format(u.output)}</span><span class="text-[8px] text-emerald-600">O</span></div>
                                 </div>
                             </div>
                         </div>
