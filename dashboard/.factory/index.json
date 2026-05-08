@@ -18,7 +18,17 @@
       "total_cache_read_tokens": 0,
       "total_output_tokens": 2500,
       "total_combined_tokens": 50500,
-      "estimated_usd_saved": 0.0
+      "estimated_usd_saved": 0.0,
+      "project_total_cost": {
+        "prompt": 1561433,
+        "reasoning": 347778,
+        "output": 92954,
+        "total": 2002365
+      },
+      "quota_status": {
+        "used": 14,
+        "limit": 20
+      }
     }
   },
   "slices": [
@@ -49,22 +59,20 @@
       "id": "BKP-004",
       "title": "Registry Generator",
       "status": "Approved",
-      "created_at": "2026-05-06T18:45:00Z",
-      "updated_at": "2026-05-07T23:58:00Z",
+      "created_at": "2026-05-06T12:00:00Z",
+      "updated_at": "2026-05-07T18:30:00Z",
       "assigned_to": "gemini-cli",
-      "phase": "validation",
-      "complexity": "Medium",
-      "forecast": {
-        "complexity": "Medium",
-        "estimated_tokens": {
-          "prompt": 25000,
-          "reasoning": 5000,
-          "output": 1500
-        }
+      "phase": "warehoused",
+      "complexity": "Low",
+      "token_usage": {
+        "prompt": 25000,
+        "reasoning": 5000,
+        "output": 1500,
+        "total": 31500
       },
       "spec_path": "docs/specs/product/004-registry-generator.md",
       "dependencies": [],
-      "metadata_version": "1.0"
+      "metadata_version": "1.1.0"
     }
   ]
 }
