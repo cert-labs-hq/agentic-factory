@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  openobserve:
+    image: o2cr.ai/openobserve/openobserve-enterprise:latest
+    container_name: openobserve
+    ports:
+      - "5080:5080"
+    environment:
+      - ZO_DATA_DIR=/data
+      - ZO_ROOT_USER_EMAIL=root@example.com
+      - ZO_ROOT_USER_PASSWORD=Complexpass#123
+    volumes:
+      - ./data:/data
+    deploy:
+      resources:
+        limits:
+          memory: 2G # Capped for Pi 4 stability
+    restart: unless-stopped
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:latest
+    container_name: otel-collector
+    command: ["--config=/etc/otel-collector-config.yaml"]
+    volumes:
+      - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
+    ports:
+      - "4317:4317" # OTLP gRPC endpoint
+      - "4318:4318" # OTLP HTTP endpoint
+    deploy:
+      resources:
+        limits:
+          memory: 512M # Prevents collector memory spikes on the Pi
+    depends_on:
+      - openobserve
+    restart: unless-stopped
+

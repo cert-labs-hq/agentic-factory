@@ -1,0 +1,31 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+processors:
+  batch:
+    send_batch_size: 100
+    timeout: 1s
+  memory_limiter:
+    check_interval: 1s
+    limit_percentage: 75
+    spike_limit_percentage: 20
+
+exporters:
+  otlphttp/openobserve:
+    endpoint: "http://openobserve:5080/api/default" # Adjust 'default' if using a specific organization
+    headers:
+      # Authorization: Basic <Base64 encoded root@example.com:Complexpass#123>
+      # 'cm9vdEBleGFtcGxlLmNvbTpDb21wbGV4cGFzcyMxMjM=' is the base64 string for your credentials
+      Authorization: "Basic cm9vdEBleGFtcGxlLmNvbTpDb21wbGV4cGFzcyMxMjM="
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [memory_limiter, batch]
+      exporters: [otlphttp/openobserve]
