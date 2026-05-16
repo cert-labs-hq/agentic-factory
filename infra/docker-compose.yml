@@ -21,16 +21,16 @@ services:
   otel-collector:
     image: otel/opentelemetry-collector-contrib:latest
     container_name: otel-collector
-    command: ["--config=/etc/otel-collector-config.yaml"]
+    command: ["--config=/etc/otelcol-contrib/config.yaml"]
     volumes:
-      - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
+      - ./otel-collector-config.yaml:/etc/otelcol-contrib/config.yaml
     ports:
-      - "4317:4317" # OTLP gRPC endpoint
-      - "4318:4318" # OTLP HTTP endpoint
+      - "4317:4317"
+      - "4318:4318"
     deploy:
       resources:
         limits:
-          memory: 512M # Prevents collector memory spikes on the Pi
+          memory: 512M
     depends_on:
       - openobserve
     restart: unless-stopped

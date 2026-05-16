@@ -687,6 +687,17 @@
         "output": 495,
         "total": 2043
       }
+    },
+    {
+      "slice_id": "BKP-004",
+      "phase": "validation",
+      "tokens": {
+        "prompt": 127,
+        "reasoning": 1507,
+        "output": 0,
+        "total": 1634
+      },
+      "timestamp": "2026-05-16T03:48:37.610291Z"
     }
   ]
 }

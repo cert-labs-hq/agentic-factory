@@ -17,11 +17,11 @@ processors:
 
 exporters:
   otlphttp/openobserve:
-    endpoint: "http://openobserve:5080/api/default" # Adjust 'default' if using a specific organization
+    endpoint: "http://openobserve:5080/api/default"
+    compression: none # CRITICAL: Disables gzip to prevent the Rust network layer from dropping connections
     headers:
-      # Authorization: Basic <Base64 encoded root@example.com:Complexpass#123>
-      # 'cm9vdEBleGFtcGxlLmNvbTpDb21wbGV4cGFzcyMxMjM=' is the base64 string for your credentials
       Authorization: "Basic cm9vdEBleGFtcGxlLmNvbTpDb21wbGV4cGFzcyMxMjM="
+      stream-name: "default" # Tells OpenObserve to target the default trace index stream
 
 service:
   pipelines:

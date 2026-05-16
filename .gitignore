@@ -1,0 +1,40 @@
+# ==========================================
+# 1. Infrastructure & Telemetry Database
+# ==========================================
+# CRITICAL: Ignore local OpenObserve data storage (prevents committing parquet/index files)
+**/data/
+
+# ==========================================
+# 2. Secrets & Environment Configuration
+# ==========================================
+# Keeps your Gemini API keys and OpenObserve passwords off GitHub
+.env
+.env.local
+.env.*.local
+
+# ==========================================
+# 3. Application Runtimes (Hybrid Node/Python)
+# ==========================================
+# Node.js artifacts
+node_modules/
+dist/
+build/
+npm-debug.log*
+yarn-error.log*
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.pytest_cache/
+env/
+
+# ==========================================
+# 4. System & Editor Defaults
+# ==========================================
+.DS_Store
+.vscode/
+.idea/
+*.swp
