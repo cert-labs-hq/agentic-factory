@@ -698,6 +698,28 @@
         "total": 1634
       },
       "timestamp": "2026-05-16T03:48:37.610291Z"
+    },
+    {
+      "slice_id": "BKP-004",
+      "phase": "validation",
+      "tokens": {
+        "prompt": 127,
+        "reasoning": 1645,
+        "output": 0,
+        "total": 1772
+      },
+      "timestamp": "2026-05-16T04:10:44.259124Z"
+    },
+    {
+      "slice_id": "DOC-001",
+      "phase": "planning",
+      "tokens": {
+        "prompt": 152,
+        "reasoning": 1368,
+        "output": 1055,
+        "total": 2575
+      },
+      "timestamp": "2026-05-16T04:22:03.811415Z"
     }
   ]
 }

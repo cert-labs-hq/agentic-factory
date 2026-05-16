@@ -1,4 +1,5 @@
 import os
+import re
 import time
 import json
 from pathlib import Path
@@ -45,7 +46,6 @@ class AgenticHarness:
         """
         self.telemetry_path.parent.mkdir(parents=True, exist_ok=True)
         
-        # Initialize or load historical local data contract
         if self.telemetry_path.exists():
             try:
                 with open(self.telemetry_path, "r") as f:
@@ -58,7 +58,6 @@ class AgenticHarness:
         if "logs" not in local_data:
             local_data["logs"] = []
             
-        # Append structured block precisely matching aggregate_telemetry tracking patterns
         local_data["logs"].append({
             "slice_id": slice_id,
             "phase": phase.lower(),
@@ -74,7 +73,7 @@ class AgenticHarness:
         with open(self.telemetry_path, "w") as f:
             json.dump(local_data, f, indent=2)
 
-    def execute_sdd_step(self, slice_id: str, phase: str, prompt: str):
+    def execute_sdd_step(self, slice_id: str, phase: str, prompt: str, output_path: str = None):
         """
         Executes a Spec-Driven Development prompt, wrapping inference inside 
         nested OTel Spans and broadcasting data to both OpenObserve and local JSON registries.
@@ -99,11 +98,16 @@ class AgenticHarness:
             end_time_nano = int(time.time() * 1e9)
             usage = response.usage_metadata
             
-            # FIXED: Target the exact SDK metadata property 'thoughts_token_count'
+            # FIXED TOKEN MATH: The SDK already isolates these values cleanly
             prompt_tokens = getattr(usage, "prompt_token_count", 0) or 0
-            candidate_tokens = getattr(usage, "candidates_token_count", 0) or 0
             reasoning_tokens = getattr(usage, "thoughts_token_count", 0) or 0 
-            completion_tokens = max(0, candidate_tokens - reasoning_tokens)
+            completion_tokens = getattr(usage, "candidates_token_count", 0) or 0
+            
+            # If candidates include thoughts in future versions, this acts as a safe fallback
+            if completion_tokens >= reasoning_tokens and reasoning_tokens > 0:
+                # Only subtract if we are certain candidates_token_count is the sum of both
+                if (prompt_tokens + completion_tokens) == getattr(usage, "total_token_count", 0):
+                    completion_tokens = completion_tokens - reasoning_tokens
 
             # 1. Broadcast to the Distributed Observability Plane (OpenObserve)
             child_span = self.tracer.start_span(
@@ -124,31 +128,58 @@ class AgenticHarness:
             # 2. Broadcast to the Local File-Based Observability Layer (Skills Registry)
             self._write_local_telemetry(slice_id, phase, prompt_tokens, reasoning_tokens, completion_tokens)
 
+            # 3. File Creation Logic
+            if output_path:
+                target_file = self.root / output_path
+                target_file.parent.mkdir(parents=True, exist_ok=True)
+                
+                # Bypassing the UI parsing bug by programmatically generating backticks
+                bt = chr(96) * 3
+                pattern = re.compile(f"{bt}(?:\\w+)?\n(.*?)\n{bt}", re.DOTALL | re.IGNORECASE)
+                match = pattern.search(response.text)
+                clean_code = match.group(1).strip() if match else response.text.strip()
+                
+                with open(target_file, "w") as f:
+                    f.write(clean_code)
+                
+                # Grant execute permissions if it's a shell script
+                if target_file.suffix in [".sh", ".bash"]:
+                    try:
+                        os.chmod(target_file, 0o755)
+                    except Exception:
+                        pass
+
             return response.text
 
 if __name__ == "__main__":
     harness = AgenticHarness()
     
-    test_runner_prompt = """
-    Context: Slice BKP-004 successfully implemented the unit and integration tests located in the /tests folder.
+    # Updated prompt targeting a project management and documentation brief
+    project_brief_prompt = """
+    Context: We are developing an Agentic Code Supply Chain platform using Spec-Driven Development (SDD). 
+    The system utilizes Gemini models to automate development workflows and includes robust OpenTelemetry 
+    tracking for token economics and FinOps.
     
-    Task: Write a deterministic bash run script (run_tests.sh) that executes these specific tests.
+    Task: Write an executive project brief. 
     Requirements:
-    1. Check for the virtual environment (.venv) and activate it if present.
-    2. Execute the tests using pytest, outputting a verbose log.
-    3. Include clean exit codes to integrate cleanly into an upstream IDP/CI pipeline.
-    4. Provide ONLY the raw bash code within a single markdown block.
+    1. Summarize the core mission of the Agentic Code Supply Chain.
+    2. Outline a status report template for the architectural slices (e.g., SYS-402, BKP-004) currently defined in the system.
+    3. Keep the tone professional, analytical, and highly structured.
+    4. Provide the output entirely in standard Markdown format.
     """
     
-    print("🚀 Dispatched task for BKP-004 Run Script...")
+    print("🚀 Dispatched task for Project Brief Documentation...")
+    
+    # We change the slice_id to reflect a documentation task and output to a .md file
     output = harness.execute_sdd_step(
-        slice_id="BKP-004", 
-        phase="Validation", 
-        prompt=test_runner_prompt
+        slice_id="DOC-001", 
+        phase="planning", 
+        prompt=project_brief_prompt,
+        output_path="docs/project_status_brief.md"
     )
     
     print("\n✅ Inference Complete! Output Generated:")
     print("-" * 50)
-    print(output)
+    print("File docs/project_status_brief.md successfully created!")
     print("-" * 50)
     print("Telemetry dual-write successful. Data sent to OpenObserve and local index.")
